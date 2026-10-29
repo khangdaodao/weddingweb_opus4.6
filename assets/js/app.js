@@ -17,19 +17,26 @@ document.addEventListener("DOMContentLoaded", () => {
   // 2. Render thông tin lên Hero & Countdown Section
   renderHeroData(WEDDING_CONFIG);
 
-  // 3. Khởi tạo Countdown
+  // 3. Render thông tin lên Section Quote & Couple Profile (Phase 2)
+  renderQuoteData(WEDDING_CONFIG);
+  renderCoupleData(WEDDING_CONFIG);
+
+  // 4. Khởi tạo Scroll Reveal Observer cho các phần tử khi cuộn tới
+  initScrollReveal();
+
+  // 5. Khởi tạo Countdown
   initCountdown(WEDDING_CONFIG.weddingDate);
 
-  // 4. Khởi tạo Trình điều khiển Nhạc
+  // 6. Khởi tạo Trình điều khiển Nhạc
   const musicController = initMusic(WEDDING_CONFIG.music.src);
 
-  // 5. Khởi tạo Bottom Navbar
+  // 7. Khởi tạo Bottom Navbar
   const navbarController = initNavbar();
 
-  // 6. Khởi tạo hiệu ứng cánh hoa rơi
+  // 8. Khởi tạo hiệu ứng cánh hoa rơi
   initPetals();
 
-  // 7. Khởi tạo sự kiện mở thiệp
+  // 9. Khởi tạo sự kiện mở thiệp
   initCover(() => {
     // Khi người dùng bấm "Mở Thiệp":
     musicController.showButton();
@@ -101,5 +108,90 @@ function renderHeroData(cfg) {
         alert(`Ngày cưới: ${cfg.dateFormatted}. Hân hạnh được đón tiếp bạn!`);
       }
     });
+  }
+}
+
+/**
+ * Điền dữ liệu vào Section Quote (Phase 2)
+ */
+function renderQuoteData(cfg) {
+  const elQuote = document.getElementById("quoteText");
+  const elAuthor = document.getElementById("quoteAuthor");
+
+  if (elQuote && cfg.quote) elQuote.textContent = cfg.quote.content;
+  if (elAuthor && cfg.quote) elAuthor.textContent = cfg.quote.author;
+}
+
+/**
+ * Điền dữ liệu vào Section Couple Profile (Phase 2)
+ * Cô dâu trước, Chú rể sau. Không hiển thị thông tin cha mẹ.
+ */
+function renderCoupleData(cfg) {
+  // Lời chào đầu
+  const elGreetingTitle = document.getElementById("coupleGreetingTitle");
+  const elGreetingSub = document.getElementById("coupleGreetingSub");
+  if (elGreetingTitle && cfg.coupleGreeting) elGreetingTitle.textContent = cfg.coupleGreeting.title;
+  if (elGreetingSub && cfg.coupleGreeting) elGreetingSub.textContent = cfg.coupleGreeting.subtitle;
+
+  // 1. Cô Dâu
+  const elBridePhoto = document.getElementById("bridePhoto");
+  const elBrideOverlay = document.getElementById("brideOverlayName");
+  const elBrideFullName = document.getElementById("brideFullName");
+  const elBrideBio = document.getElementById("brideBio");
+  const elBrideFb = document.getElementById("brideFb");
+  const elBrideIg = document.getElementById("brideIg");
+
+  if (cfg.bride) {
+    if (elBridePhoto) elBridePhoto.src = cfg.bride.photo || "assets/images/couple/bride.jpg";
+    if (elBrideOverlay) elBrideOverlay.textContent = cfg.bride.shortName;
+    if (elBrideFullName) elBrideFullName.textContent = cfg.bride.fullName;
+    if (elBrideBio) elBrideBio.textContent = cfg.bride.bio;
+    if (elBrideFb && cfg.bride.facebook) elBrideFb.href = cfg.bride.facebook;
+    if (elBrideIg && cfg.bride.instagram) elBrideIg.href = cfg.bride.instagram;
+  }
+
+  // 2. Chú Rể
+  const elGroomPhoto = document.getElementById("groomPhoto");
+  const elGroomOverlay = document.getElementById("groomOverlayName");
+  const elGroomFullName = document.getElementById("groomFullName");
+  const elGroomBio = document.getElementById("groomBio");
+  const elGroomFb = document.getElementById("groomFb");
+  const elGroomIg = document.getElementById("groomIg");
+
+  if (cfg.groom) {
+    if (elGroomPhoto) elGroomPhoto.src = cfg.groom.photo || "assets/images/couple/groom.jpg";
+    if (elGroomOverlay) elGroomOverlay.textContent = cfg.groom.shortName;
+    if (elGroomFullName) elGroomFullName.textContent = cfg.groom.fullName;
+    if (elGroomBio) elGroomBio.textContent = cfg.groom.bio;
+    if (elGroomFb && cfg.groom.facebook) elGroomFb.href = cfg.groom.facebook;
+    if (elGroomIg && cfg.groom.instagram) elGroomIg.href = cfg.groom.instagram;
+  }
+}
+
+/**
+ * Khởi tạo hiệu ứng xuất hiện khi cuộn tới (Scroll Reveal)
+ */
+function initScrollReveal() {
+  const elements = document.querySelectorAll(".reveal-on-scroll");
+  if (!elements.length) return;
+
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("in-view");
+          obs.unobserve(entry.target);
+        }
+      });
+    }, {
+      root: null,
+      threshold: 0.15,
+      rootMargin: "0px 0px -40px 0px"
+    });
+
+    elements.forEach(el => observer.observe(el));
+  } else {
+    // Fallback nếu trình duyệt cũ không có IntersectionObserver
+    elements.forEach(el => el.classList.add("in-view"));
   }
 }

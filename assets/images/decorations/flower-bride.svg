@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 220" fill="none">
+  <!-- Cụm hoa trang trí bên trái khung ảnh cô dâu -->
+  <g transform="translate(10, 10)">
+    <!-- Lá xanh sẫm -->
+    <path d="M40 70 C20 40 40 10 70 20 C60 50 60 70 40 70 Z" fill="#2E4A28" opacity="0.85"/>
+    <path d="M25 120 C5 95 10 65 35 70 C40 95 35 115 25 120 Z" fill="#3D5C35" opacity="0.85"/>
+    <path d="M30 160 C15 140 25 120 45 125 C45 145 40 155 30 160 Z" fill="#2E4A28" opacity="0.8"/>
+
+    <!-- Hoa mẫu đơn lớn màu đỏ maroon sẫm -->
+    <circle cx="75" cy="110" r="38" fill="#4A0808"/>
+    <circle cx="72" cy="107" r="32" fill="#5C0E0E"/>
+    <path d="M52 98 C56 85 90 82 98 98 C102 110 85 128 68 128 C52 128 48 110 52 98 Z" fill="#751515"/>
+    <circle cx="75" cy="108" r="9" fill="#D4AF37" opacity="0.85"/>
+
+    <!-- Hoa phụ màu hồng phấn phía trên -->
+    <g transform="translate(45, 25)">
+      <circle cx="25" cy="25" r="22" fill="#C97575"/>
+      <circle cx="25" cy="25" r="16" fill="#E29696"/>
+      <circle cx="25" cy="25" r="10" fill="#F0B8B8"/>
+      <circle cx="25" cy="25" r="4" fill="#D4AF37"/>
+    </g>
+  </g>
+</svg>
+

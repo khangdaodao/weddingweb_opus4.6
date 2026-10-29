@@ -1,0 +1,66 @@
+/**
+ * ==============================================================================
+ * SECTION 2: QUOTE (LỜI TRÍCH DẪN NGHỆ THUẬT)
+ * ==============================================================================
+ * Nền màu maroon sẫm sang trọng, cành hoa hồng nhỏ ở đỉnh.
+ * Chữ trắng trang nhã, font Playfair Display / Serif in nghiêng.
+ */
+
+.quote-section {
+  position: relative;
+  background-color: var(--color-maroon-deep);
+  color: var(--color-text-white);
+  padding: 60px 24px 65px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Họa tiết cành hoa hồng nhỏ ở đỉnh */
+.quote-rose-icon {
+  width: 58px;
+  height: 58px;
+  margin-bottom: 22px;
+  opacity: 0.95;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.25));
+}
+
+/* Nội dung câu trích dẫn */
+.quote-content {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 14.5px;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.95);
+  max-width: 320px;
+  margin-bottom: 18px;
+  font-weight: 400;
+  letter-spacing: 0.2px;
+}
+
+/* Tác giả / Nguồn trích dẫn */
+.quote-author {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--color-gold-light);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.quote-author::before,
+.quote-author::after {
+  content: "";
+  display: inline-block;
+  width: 18px;
+  height: 1px;
+  background-color: var(--color-gold-accent);
+  vertical-align: middle;
+}
+

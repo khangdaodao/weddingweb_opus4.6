@@ -11,21 +11,22 @@ const WEDDING_CONFIG = {
   // --------------------------------------------------------------------------
   // 1. THÔNG TIN CẶP ĐÔI (COUPLE INFORMATION)
   // --------------------------------------------------------------------------
-  groom: {
-    shortName: "Hoàng Nam",
-    fullName: "Vũ Hoàng Nam",
-    roleText: "Chú Rể",
-    parents: "Trưởng nam của Ông Vũ Đình Dũng & Bà Nguyễn Thị Mai",
-    photo: "assets/images/couple/groom.jpg",
-    facebook: "https://facebook.com",
-    instagram: "https://instagram.com"
-  },
+  // Lưu ý: Không hiển thị thông tin cha mẹ ở phần giới thiệu theo yêu cầu
   bride: {
     shortName: "Khánh Linh",
     fullName: "Đỗ Khánh Linh",
     roleText: "Cô Dâu",
-    parents: "Ái nữ của Ông Đỗ Quang Huy & Bà Lê Thu Trang",
+    bio: "Một cô gái dịu dàng luôn mỉm cười và trân quý từng khoảnh khắc ngọt ngào của tình yêu.",
     photo: "assets/images/couple/bride.jpg",
+    facebook: "https://facebook.com",
+    instagram: "https://instagram.com"
+  },
+  groom: {
+    shortName: "Hoàng Nam",
+    fullName: "Vũ Hoàng Nam",
+    roleText: "Chú Rể",
+    bio: "Chàng trai chân thành, luôn kiên nhẫn và sẵn lòng là chỗ dựa vững chãi suốt cuộc đời.",
+    photo: "assets/images/couple/groom.jpg",
     facebook: "https://facebook.com",
     instagram: "https://instagram.com"
   },
@@ -49,9 +50,15 @@ const WEDDING_CONFIG = {
   heroInvitationText: "Chúng tôi sắp bước vào chặng đường mới, và mong được đón tiếp bạn trong ngày hạnh phúc nhất!",
   saveTheDateText: "Lưu Ngày Trọng Đại",
 
+  // Lời chào mở đầu cho Section Couple Profile
+  coupleGreeting: {
+    title: "Trân Trọng Kính Mời",
+    subtitle: "Sự hiện diện của Quý khách là niềm vinh hạnh to lớn và lời chúc phúc ý nghĩa nhất dành cho chúng tôi."
+  },
+
   quote: {
-    content: "“Tình yêu không phải là nhìn nhau, mà là cùng nhìn về một hướng và cùng nhau đi suốt cuộc đời.”",
-    author: "Antoine de Saint-Exupéry"
+    content: "“Được ai đó yêu sâu sắc sẽ mang lại cho bạn sức mạnh, trong khi yêu ai đó sâu sắc sẽ mang lại cho bạn sự dũng cảm.”",
+    author: "Lão Tử"
   },
 
   // --------------------------------------------------------------------------

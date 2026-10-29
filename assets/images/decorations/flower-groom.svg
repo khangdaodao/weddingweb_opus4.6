@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 220" fill="none">
+  <!-- Cụm hoa trang trí bên phải khung ảnh chú rể -->
+  <g transform="translate(10, 10)">
+    <!-- Lá xanh sẫm bên phải -->
+    <path d="M100 70 C120 40 100 10 70 20 C80 50 80 70 100 70 Z" fill="#2E4A28" opacity="0.85"/>
+    <path d="M115 120 C135 95 130 65 105 70 C100 95 105 115 115 120 Z" fill="#3D5C35" opacity="0.85"/>
+    <path d="M110 160 C125 140 115 120 95 125 C95 145 100 155 110 160 Z" fill="#2E4A28" opacity="0.8"/>
+
+    <!-- Hoa mẫu đơn lớn màu đỏ maroon sẫm -->
+    <circle cx="65" cy="110" r="38" fill="#4A0808"/>
+    <circle cx="68" cy="107" r="32" fill="#5C0E0E"/>
+    <path d="M88 98 C84 85 50 82 42 98 C38 110 55 128 72 128 C88 128 92 110 88 98 Z" fill="#751515"/>
+    <circle cx="65" cy="108" r="9" fill="#D4AF37" opacity="0.85"/>
+
+    <!-- Hoa phụ màu hồng phấn phía dưới/giữa -->
+    <g transform="translate(65, 45)">
+      <circle cx="25" cy="25" r="20" fill="#C97575"/>
+      <circle cx="25" cy="25" r="14" fill="#E29696"/>
+      <circle cx="25" cy="25" r="9" fill="#F0B8B8"/>
+      <circle cx="25" cy="25" r="4" fill="#D4AF37"/>
+    </g>
+  </g>
+</svg>
+

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
+  <!-- Cành hoa hồng màu nước thanh nhã đặt ở đỉnh Section Quote -->
+  <g transform="translate(10, 5)">
+    <!-- Cành & cuống hoa -->
+    <path d="M50 85 C48 65 52 45 50 35" stroke="#3D5C35" stroke-width="2.5" stroke-linecap="round"/>
+    
+    <!-- Lá cây -->
+    <path d="M49 60 C35 55 30 40 40 38 C50 36 50 50 49 60 Z" fill="#2E4A28" opacity="0.85"/>
+    <path d="M51 52 C65 48 70 35 60 32 C50 30 50 45 51 52 Z" fill="#3D5C35" opacity="0.85"/>
+    <path d="M48 75 C38 72 32 62 40 60 C48 58 48 68 48 75 Z" fill="#2E4A28" opacity="0.8"/>
+
+    <!-- Nụ hồng -->
+    <circle cx="50" cy="28" r="16" fill="#D67272"/>
+    <circle cx="50" cy="26" r="13" fill="#E29696"/>
+    <path d="M42 22 C45 16 55 16 58 22 C60 28 50 34 45 32 C40 30 39 26 42 22 Z" fill="#F0B8B8"/>
+    <circle cx="50" cy="25" r="5" fill="#D4AF37" opacity="0.75"/>
+  </g>
+</svg>
+
