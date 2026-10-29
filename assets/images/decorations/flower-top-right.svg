@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  <!-- Cụm hoa hồng & mẫu đơn màu maroon và dusty rose ở góc trên bên phải -->
+  <g transform="translate(40, -10)">
+    <!-- Lá sẫm -->
+    <path d="M70 40 C60 10 20 20 15 45 C10 70 50 80 70 40 Z" fill="#2E4A28" opacity="0.85"/>
+    <path d="M110 50 C130 20 160 30 155 60 C150 90 120 85 110 50 Z" fill="#3D5C35" opacity="0.85"/>
+    <path d="M40 90 C10 95 15 130 45 130 C75 130 70 95 40 90 Z" fill="#2E4A28" opacity="0.8"/>
+    
+    <!-- Hoa mẫu đơn lớn màu đỏ bordeaux sẫm -->
+    <circle cx="85" cy="85" r="45" fill="#4A0808"/>
+    <circle cx="80" cy="80" r="38" fill="#5C0E0E"/>
+    <path d="M55 70 C60 55 100 50 110 70 C115 85 95 105 75 105 C55 105 50 85 55 70 Z" fill="#751515"/>
+    <path d="M70 75 C75 65 95 65 100 75 C105 85 90 95 80 95 C70 95 65 85 70 75 Z" fill="#8C1D1D"/>
+    <circle cx="85" cy="82" r="10" fill="#D4AF37" opacity="0.8"/>
+
+    <!-- Hoa nhỏ màu hồng phấn (dusty rose) -->
+    <g transform="translate(110, 100)">
+      <circle cx="20" cy="20" r="24" fill="#C97575"/>
+      <circle cx="20" cy="20" r="18" fill="#E29696"/>
+      <circle cx="20" cy="20" r="12" fill="#F0B8B8"/>
+      <circle cx="20" cy="20" r="6" fill="#D4AF37"/>
+    </g>
+
+    <!-- Nụ hoa phụ -->
+    <circle cx="35" cy="60" r="14" fill="#8C1D1D"/>
+    <circle cx="33" cy="58" r="9" fill="#B32B2B"/>
+  </g>
+</svg>
+

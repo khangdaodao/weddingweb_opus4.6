@@ -1,0 +1,163 @@
+/**
+ * ==============================================================================
+ * SECTION 0: COVER OVERLAY (MÀN HÌNH BÌA THIỆP)
+ * ==============================================================================
+ * Khóa cuộn trang 100%, căn giữa tuyệt đối theo viewport 390x844.
+ * Chứa khung vòm bo tròn lớn màu maroon sẫm với viền mảnh sang trọng.
+ */
+
+.cover-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background-color: var(--color-bg-cream);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 12px;
+  /* Chuyển cảnh mềm mại 750ms, kết hợp fade opacity và chuyển động rất nhẹ */
+  transition: opacity 0.75s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.75s cubic-bezier(0.4, 0, 0.2, 1),
+              visibility 0.75s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: opacity, transform;
+}
+
+.cover-overlay.opened {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px) scale(0.99);
+  pointer-events: none;
+}
+
+.cover-wrapper {
+  width: 100%;
+  max-width: var(--container-max-width);
+  height: 100%;
+  max-height: 844px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+/* Khối vòm chính màu maroon sẫm */
+.cover-arch-card {
+  width: 100%;
+  max-width: 350px;
+  background-color: var(--color-maroon-deep);
+  border-radius: 175px 175px 32px 32px;
+  padding: 34px 20px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  color: var(--color-text-white);
+  box-shadow: 0 12px 35px rgba(56, 4, 4, 0.35);
+  position: relative;
+  z-index: 3;
+}
+
+/* Thẻ THE WEDDING OF */
+.cover-tagline {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 3.5px;
+  text-transform: uppercase;
+  color: var(--color-text-gold);
+  margin-bottom: 18px;
+}
+
+/* Khung ảnh chân dung cặp đôi hình vòm cong oval */
+.cover-photo-frame {
+  width: 168px;
+  height: 228px;
+  border-radius: 120px;
+  border: 2px solid var(--color-gold-accent);
+  padding: 4px;
+  margin-bottom: 20px;
+  background: radial-gradient(circle, rgba(200, 163, 102, 0.25) 0%, transparent 80%);
+}
+
+.cover-photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 116px;
+}
+
+/* Tên cặp đôi kiểu chữ Script nghệ thuật */
+.cover-names {
+  font-family: var(--font-script);
+  font-size: 34px;
+  line-height: 1.25;
+  color: var(--color-text-white);
+  margin-bottom: 8px;
+  padding: 0 10px;
+  word-break: break-word;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.cover-date {
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  color: var(--color-gold-light);
+  margin-bottom: 16px;
+}
+
+/* Lời gửi khách mời */
+.cover-recipient {
+  margin-top: 4px;
+  margin-bottom: 18px;
+}
+
+.cover-recipient-label {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 3px;
+}
+
+.cover-recipient-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text-gold);
+}
+
+.cover-divider {
+  width: 80px;
+  height: 1px;
+  background: repeating-linear-gradient(to right, var(--color-gold-accent) 0, var(--color-gold-accent) 5px, transparent 5px, transparent 8px);
+  margin: 0 auto 18px;
+  opacity: 0.7;
+}
+
+/* Nút bấm "Mở Thiệp" */
+.btn-open-invitation {
+  background-color: var(--color-bg-paper);
+  color: var(--color-maroon-deep);
+  padding: 12px 30px;
+  border-radius: var(--radius-full);
+  font-size: 14px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  cursor: pointer;
+}
+
+.btn-open-invitation:hover,
+.btn-open-invitation:active {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.28);
+}
+
+.btn-open-invitation svg {
+  width: 17px;
+  height: 17px;
+  stroke: var(--color-maroon-deep);
+  fill: none;
+}

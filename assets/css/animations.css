@@ -1,0 +1,96 @@
+/**
+ * ==============================================================================
+ * ANIMATIONS & PARTICLES (HIỆU ỨNG CHUYỂN ĐỘNG)
+ * ==============================================================================
+ */
+
+/* Nhịp thở cho nút phát nhạc */
+@keyframes musicPulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 4px 16px rgba(74, 8, 8, 0.35);
+  }
+  50% {
+    transform: scale(1.08);
+    box-shadow: 0 6px 22px rgba(180, 20, 20, 0.55);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 4px 16px rgba(74, 8, 8, 0.35);
+  }
+}
+
+/* Container chứa các cánh hoa rơi */
+.petals-container {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 2;
+}
+
+/* Từng cánh hoa rơi */
+.petal {
+  position: absolute;
+  background: radial-gradient(circle at 30% 30%, #D67272 0%, #871919 70%, #540808 100%);
+  border-radius: 60% 40% 70% 30% / 60% 30% 70% 40%;
+  opacity: 0.75;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
+  will-change: transform, opacity;
+  animation-name: fallPetal;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes fallPetal {
+  0% {
+    transform: translate3d(0, -20px, 0) rotate(0deg) scale(0.8);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.85;
+  }
+  85% {
+    opacity: 0.75;
+  }
+  100% {
+    transform: translate3d(var(--drift-x, 40px), 860px, 0) rotate(var(--rot, 360deg)) scale(1);
+    opacity: 0;
+  }
+}
+
+/* Hiệu ứng mờ xuất hiện mượt */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity var(--transition-slow), transform var(--transition-slow);
+}
+
+.fade-in-up.appear {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --------------------------------------------------------------------------
+ * PREFERS REDUCED MOTION (TRỢ NĂNG GIẢM CHUYỂN ĐỘNG)
+ * -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .cover-overlay,
+  .hero-reveal-item,
+  .bottom-navbar,
+  .music-toggle-btn,
+  .fade-in-up {
+    transition: opacity 0.15s ease !important;
+    transform: none !important;
+    transition-delay: 0s !important;
+  }
+  
+  .music-toggle-btn.playing {
+    animation: none !important;
+  }
+  
+  .petals-container {
+    display: none !important;
+  }
+}
+

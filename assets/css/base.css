@@ -1,0 +1,114 @@
+/**
+ * ==============================================================================
+ * BASE STYLES & RESET
+ * ==============================================================================
+ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  background-color: #2D0505;
+  /* Màu nền viền ngoài màn hình khi xem trên desktop */
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-bg-cream);
+  color: var(--color-text-maroon);
+  line-height: 1.6;
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
+  margin: 0 auto;
+}
+
+/* Khóa cuộn trang khi màn hình bìa chưa mở */
+body.lock-scroll {
+  overflow: hidden !important;
+  height: 100vh !important;
+  touch-action: none;
+}
+
+/* Khung hiển thị chuẩn mobile-first căn giữa trên màn hình lớn */
+.app-container {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  min-height: 100vh;
+  background-color: var(--color-bg-cream);
+  position: relative;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.4);
+  overflow-x: hidden;
+}
+
+/* Typography tiện ích */
+.font-script {
+  font-family: var(--font-script);
+}
+
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+.font-sans {
+  font-family: var(--font-sans);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: normal;
+  line-height: 1.2;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+button {
+  font-family: inherit;
+  border: none;
+  background: none;
+  cursor: pointer;
+  outline: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Họa tiết hoa lá trang trí các góc */
+.floral-decoration {
+  position: absolute;
+  pointer-events: none;
+  z-index: 2;
+  user-select: none;
+}
+
+.floral-top-right {
+  top: -15px;
+  right: -15px;
+  width: 130px;
+  opacity: 0.9;
+}
+
+.floral-bottom-left {
+  bottom: -20px;
+  left: -20px;
+  width: 130px;
+  opacity: 0.9;
+}

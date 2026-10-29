@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Thiệp Cưới - Hoàng Nam & Khánh Linh</title>
+  
+  <!-- Google Fonts: Script nghệ thuật (Great Vibes) & Serif sang trọng (Playfair Display) & Sans hiện đại (Montserrat) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+  
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/cover.css">
+  <link rel="stylesheet" href="assets/css/hero.css">
+  <link rel="stylesheet" href="assets/css/navbar.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+</head>
+<body class="lock-scroll">
+
+  <!-- =========================================================================
+       SECTION 0: COVER OVERLAY (MÀN HÌNH BÌA CỐ ĐỊNH, KHÓA CUỘN BAN ĐẦU)
+       ========================================================================= -->
+  <div id="coverOverlay" class="cover-overlay">
+    <!-- Cụm hoa trang trí góc -->
+    <img src="assets/images/decorations/flower-top-right.svg" alt="Hoa trang trí" class="floral-decoration floral-top-right">
+    <img src="assets/images/decorations/flower-bottom-left.svg" alt="Hoa trang trí" class="floral-decoration floral-bottom-left">
+
+    <div class="cover-wrapper">
+      <!-- Khối vòm cong bo tròn màu maroon sẫm -->
+      <div class="cover-arch-card">
+        <p id="coverTagline" class="cover-tagline">THE WEDDING OF</p>
+
+        <!-- Khung ảnh chân dung oval vòm cong viền vàng -->
+        <div class="cover-photo-frame">
+          <img id="coverPhoto" src="assets/images/couple/cover.jpg" alt="Ảnh cặp đôi" class="cover-photo-img">
+        </div>
+
+        <!-- Tên cặp đôi -->
+        <h1 id="coverNames" class="cover-names">Hoàng Nam & Khánh Linh</h1>
+        
+        <!-- Ngày cưới -->
+        <p id="coverDate" class="cover-date">12 . 12 . 2027</p>
+
+        <!-- Lời gửi khách mời -->
+        <div class="cover-recipient">
+          <p class="cover-recipient-label">Kính gửi Quý khách:</p>
+          <p id="coverRecipientName" class="cover-recipient-name">Bạn bè & Người thân thương</p>
+        </div>
+
+        <div class="cover-divider"></div>
+
+        <!-- Nút bấm "Mở Thiệp" -->
+        <button id="btnOpenInvitation" class="btn-open-invitation" type="button">
+          <svg viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+          </svg>
+          <span>Mở Thiệp</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       NỘI DUNG CHÍNH (MAIN APP CONTAINER)
+       ========================================================================= -->
+  <div class="app-container">
+
+    <!-- =======================================================================
+         SECTION 1: HERO & COUNTDOWN (TIÊU ĐIỂM & ĐỒNG HỒ ĐẾM NGƯỢC)
+         ======================================================================= -->
+    <section id="hero" class="hero-section">
+      <!-- Hiệu ứng cánh hoa rơi -->
+      <div id="petalsContainer" class="petals-container"></div>
+
+      <!-- Họa tiết hoa góc -->
+      <img src="assets/images/decorations/flower-top-right.svg" alt="Hoa trang trí" class="floral-decoration floral-top-right">
+      <img src="assets/images/decorations/flower-bottom-left.svg" alt="Hoa trang trí" class="floral-decoration floral-bottom-left">
+
+      <div class="hero-content">
+        <p id="heroTagline" class="hero-tagline hero-reveal-item">THE WEDDING OF</p>
+
+        <!-- Khung ảnh chân dung oval vòm cong viền vàng -->
+        <div class="hero-photo-frame hero-reveal-item">
+          <img id="heroPhoto" src="assets/images/couple/cover.jpg" alt="Ảnh cặp đôi" class="hero-photo-img">
+        </div>
+
+        <!-- Tên cặp đôi -->
+        <h2 id="heroNames" class="hero-names hero-reveal-item">Hoàng Nam & Khánh Linh</h2>
+
+        <!-- Ngày cưới -->
+        <p id="heroDate" class="hero-date hero-reveal-item">12 . 12 . 2027</p>
+
+        <!-- Lời mời -->
+        <p id="heroDesc" class="hero-description hero-reveal-item">
+          Chúng tôi sắp bước vào chặng đường mới, và mong được đón tiếp bạn trong ngày hạnh phúc nhất!
+        </p>
+
+        <!-- Khối 4 ô đếm ngược màu maroon -->
+        <div class="countdown-grid hero-reveal-item">
+          <div class="countdown-box">
+            <span id="countdownDays" class="countdown-number">00</span>
+            <span class="countdown-label">Ngày</span>
+          </div>
+          <div class="countdown-box">
+            <span id="countdownHours" class="countdown-number">00</span>
+            <span class="countdown-label">Giờ</span>
+          </div>
+          <div class="countdown-box">
+            <span id="countdownMinutes" class="countdown-number">00</span>
+            <span class="countdown-label">Phút</span>
+          </div>
+          <div class="countdown-box">
+            <span id="countdownSeconds" class="countdown-number">00</span>
+            <span class="countdown-label">Giây</span>
+          </div>
+        </div>
+
+        <!-- Nút "Lưu Ngày Trọng Đại" -->
+        <button id="btnSaveDate" class="btn-save-date hero-reveal-item" type="button">
+          <svg viewBox="0 0 24 24">
+            <path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20a2 2 0 002 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2z"/>
+          </svg>
+          <span>Lưu Ngày Trọng Đại</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- Placeholder các section tiếp theo của các Phase sau -->
+    <div id="couple" style="height: 10px;"></div>
+    <div id="events" style="height: 10px;"></div>
+    <div id="story" style="height: 10px;"></div>
+    <div id="gift" style="height: 10px;"></div>
+    <div id="wishes" style="height: 10px;"></div>
+
+  </div>
+
+  <!-- =========================================================================
+       NÚT PHÁT NHẠC NỔI (FLOATING MUSIC TOGGLE BUTTON)
+       ========================================================================= -->
+  <button id="musicToggleBtn" class="music-toggle-btn" type="button" aria-label="Bật/Tắt nhạc nền">
+    <svg viewBox="0 0 24 24">
+      <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
+    </svg>
+  </button>
+
+  <!-- =========================================================================
+       THANH ĐIỀU HƯỚNG CỐ ĐỊNH PHÍA DƯỚI (BOTTOM NAVBAR)
+       ========================================================================= -->
+  <nav id="bottomNavbar" class="bottom-navbar" aria-label="Thanh điều hướng">
+    <!-- 1. Đầu Trang -->
+    <button class="nav-item active" data-target="hero" aria-label="Trang chủ" type="button">
+      <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+    </button>
+    <!-- 2. Cặp Đôi -->
+    <button class="nav-item" data-target="couple" aria-label="Cặp đôi" type="button">
+      <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+    </button>
+    <!-- 3. Sự Kiện -->
+    <button class="nav-item" data-target="events" aria-label="Sự kiện" type="button">
+      <svg viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/></svg>
+    </button>
+    <!-- 4. Chuyện Tình Yêu -->
+    <button class="nav-item" data-target="story" aria-label="Chuyện tình" type="button">
+      <svg viewBox="0 0 24 24"><path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4z"/></svg>
+    </button>
+    <!-- 5. Mừng Cưới -->
+    <button class="nav-item" data-target="gift" aria-label="Mừng cưới" type="button">
+      <svg viewBox="0 0 24 24"><path d="M20 6h-2.18c.11-.31.18-.65.18-1 0-1.66-1.34-3-3-3-1.05 0-1.96.54-2.5 1.35l-.5.67-.5-.68C10.96 2.54 10.05 2 9 2 7.34 2 6 3.34 6 5c0 .35.07.69.18 1H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-5-2c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zM9 4c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm11 15H4v-2h16v2zm0-5H4V8h5.08L7 10.83 8.62 12 11 8.76V14h2V8.76L15.38 12 17 10.83 14.92 8H20v6z"/></svg>
+    </button>
+    <!-- 6. Lời Chúc -->
+    <button class="nav-item" data-target="wishes" aria-label="Lời chúc" type="button">
+      <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/></svg>
+    </button>
+  </nav>
+
+  <!-- JavaScript Scripts -->
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/cover.js"></script>
+  <script src="assets/js/countdown.js"></script>
+  <script src="assets/js/music.js"></script>
+  <script src="assets/js/navbar.js"></script>
+  <script src="assets/js/petals.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
+

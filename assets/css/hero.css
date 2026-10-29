@@ -1,0 +1,206 @@
+/**
+ * ==============================================================================
+ * SECTION 1: HERO & COUNTDOWN (TIÊU ĐIỂM & ĐỒNG HỒ ĐẾM NGƯỢC)
+ * ==============================================================================
+ * Hiển thị ngay sau khi mở thiệp.
+ * Nền kem sáng ấm áp, ảnh chân dung vòm oval, tên cặp đôi và 4 ô đếm ngược maroon.
+ */
+
+.hero-section {
+  position: relative;
+  min-height: 844px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 60px 20px 80px;
+  background-color: var(--color-bg-cream);
+  overflow: hidden;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  max-width: 360px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* --------------------------------------------------------------------------
+ * STAGGERED REVEAL ANIMATION (XUẤT HIỆN TỪNG BƯỚC MỀM MẠI)
+ * -------------------------------------------------------------------------- */
+.hero-reveal-item {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+/* Khi đã mở thiệp: hiện dần từng phần lên vị trí chuẩn */
+body.is-opened .hero-reveal-item {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 1. Dòng THE WEDDING OF (bắt đầu ngay khi cover bắt đầu mờ) */
+body.is-opened .hero-tagline.hero-reveal-item {
+  transition-delay: 0.12s;
+}
+
+/* 2. Ảnh cô dâu chú rể */
+body.is-opened .hero-photo-frame.hero-reveal-item {
+  transition-delay: 0.24s;
+}
+
+/* 3. Tên cặp đôi */
+body.is-opened .hero-names.hero-reveal-item {
+  transition-delay: 0.36s;
+}
+
+/* 4. Ngày cưới */
+body.is-opened .hero-date.hero-reveal-item {
+  transition-delay: 0.48s;
+}
+
+/* 5. Lời giới thiệu */
+body.is-opened .hero-description.hero-reveal-item {
+  transition-delay: 0.60s;
+}
+
+/* 6. Bốn ô countdown */
+body.is-opened .countdown-grid.hero-reveal-item {
+  transition-delay: 0.72s;
+}
+
+/* 7. Nút Lưu Ngày Trọng Đại */
+body.is-opened .btn-save-date.hero-reveal-item {
+  transition-delay: 0.84s;
+}
+
+.hero-tagline {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 3.5px;
+  text-transform: uppercase;
+  color: var(--color-text-maroon);
+  margin-bottom: 22px;
+}
+
+/* Khung ảnh oval hero với viền vàng gold */
+.hero-photo-frame {
+  width: 172px;
+  height: 236px;
+  border-radius: 120px;
+  border: 2px solid var(--color-gold-accent);
+  padding: 4px;
+  margin-bottom: 22px;
+  box-shadow: 0 10px 25px rgba(92, 14, 14, 0.12);
+}
+
+.hero-photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 116px;
+}
+
+/* Tên cặp đôi màu maroon đậm nghệ thuật */
+.hero-names {
+  font-family: var(--font-script);
+  font-size: 34px;
+  line-height: 1.25;
+  color: var(--color-maroon-deep);
+  margin-bottom: 6px;
+  padding: 0 10px;
+  word-break: break-word;
+}
+
+.hero-date {
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  color: var(--color-text-muted);
+  margin-bottom: 18px;
+}
+
+.hero-description {
+  font-size: 13.5px;
+  color: var(--color-text-maroon);
+  max-width: 310px;
+  line-height: 1.6;
+  margin-bottom: 28px;
+  font-weight: 400;
+}
+
+/* --------------------------------------------------------------------------
+ * KHỐI ĐỒNG HỒ ĐẾM NGƯỢC (COUNTDOWN 4 BOXES)
+ * -------------------------------------------------------------------------- */
+.countdown-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  width: 100%;
+  max-width: 330px;
+  margin-bottom: 24px;
+}
+
+.countdown-box {
+  background-color: var(--color-maroon-deep);
+  color: var(--color-text-white);
+  border-radius: var(--radius-sm);
+  padding: 12px 4px 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(74, 8, 8, 0.2);
+}
+
+.countdown-number {
+  font-family: var(--font-sans);
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--color-text-white);
+  margin-bottom: 5px;
+}
+
+.countdown-label {
+  font-size: 10.5px;
+  font-weight: 500;
+  text-transform: capitalize;
+  letter-spacing: 0.5px;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* Nút "Lưu Ngày Trọng Đại" (Save The Date) */
+.btn-save-date {
+  background-color: var(--color-maroon-deep);
+  color: var(--color-text-white);
+  padding: 11px 24px;
+  border-radius: var(--radius-sm);
+  font-size: 13.5px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 14px rgba(74, 8, 8, 0.25);
+  transition: transform var(--transition-fast), background-color var(--transition-fast);
+  cursor: pointer;
+}
+
+.btn-save-date:hover,
+.btn-save-date:active {
+  transform: translateY(-2px);
+  background-color: var(--color-maroon-main);
+}
+
+.btn-save-date svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}

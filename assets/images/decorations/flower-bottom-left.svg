@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  <!-- Cụm hoa trang trí góc dưới bên trái -->
+  <g transform="translate(-10, 40)">
+    <!-- Lá cây xanh sẫm -->
+    <path d="M40 70 C10 60 20 20 45 15 C70 10 80 50 40 70 Z" fill="#2E4A28" opacity="0.85"/>
+    <path d="M50 110 C20 130 30 160 60 155 C90 150 85 120 50 110 Z" fill="#3D5C35" opacity="0.85"/>
+    <path d="M90 40 C95 10 130 15 130 45 C130 75 95 70 90 40 Z" fill="#2E4A28" opacity="0.8"/>
+    
+    <!-- Hoa mẫu đơn lớn màu đỏ maroon -->
+    <circle cx="85" cy="85" r="45" fill="#4A0808"/>
+    <circle cx="82" cy="82" r="38" fill="#5C0E0E"/>
+    <path d="M60 75 C65 60 105 55 115 75 C120 90 100 110 80 110 C60 110 55 90 60 75 Z" fill="#751515"/>
+    <path d="M75 80 C80 70 100 70 105 80 C110 90 95 100 85 100 C75 100 70 90 75 80 Z" fill="#8C1D1D"/>
+    <circle cx="90" cy="87" r="10" fill="#D4AF37" opacity="0.8"/>
+
+    <!-- Hoa phụ màu hồng ngọc -->
+    <g transform="translate(10, 20)">
+      <circle cx="20" cy="20" r="22" fill="#C97575"/>
+      <circle cx="20" cy="20" r="16" fill="#E29696"/>
+      <circle cx="20" cy="20" r="11" fill="#F0B8B8"/>
+      <circle cx="20" cy="20" r="5" fill="#D4AF37"/>
+    </g>
+
+    <circle cx="120" cy="115" r="15" fill="#8C1D1D"/>
+    <circle cx="118" cy="113" r="10" fill="#B32B2B"/>
+  </g>
+</svg>
+

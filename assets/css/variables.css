@@ -1,0 +1,52 @@
+/**
+ * ==============================================================================
+ * BIẾN TOÀN CỤC (DESIGN SYSTEM & TOKENS)
+ * ==============================================================================
+ * Bảng màu được trích xuất sát với mẫu TF-024-PHOTO:
+ * - Maroon / Burgundy đậm cho các khối chính, card sự kiện và icon
+ * - Nền sáng kem / ngà nhạt ấm áp cho tổng thể
+ * - Điểm xuyết viền ánh kim hoàng gia (champagne gold)
+ */
+
+:root {
+  /* Bảng màu chính */
+  --color-maroon-deep: #4A0808;      /* Đỏ rượu vang đậm đà chủ đạo */
+  --color-maroon-main: #5C0E0E;      /* Đỏ bordeaux kinh điển */
+  --color-maroon-dark: #380404;      /* Bóng đỏ sẫm */
+  --color-maroon-card: #520B0B;      /* Màu nền card maroon nổi bật */
+  
+  --color-gold-accent: #C8A366;      /* Vàng ánh kim nhạt thanh lịch */
+  --color-gold-light: #F4E8D3;       /* Vàng kem phủ viền */
+  
+  --color-bg-cream: #FAF4EE;         /* Nền kem ngà nền nã */
+  --color-bg-paper: #FFFDFC;         /* Trắng ấm giấy mỹ thuật */
+  
+  --color-text-maroon: #4A0808;      /* Chữ chính trên nền sáng */
+  --color-text-muted: #7D5E5A;       /* Chữ phụ, ghi chú */
+  --color-text-white: #FFFFFF;       /* Chữ trắng tinh khiết */
+  --color-text-gold: #D8B275;        /* Chữ vàng kim điểm nhấn */
+
+  /* Kiểu chữ (Typography) */
+  --font-script: 'Great Vibes', 'Alex Brush', cursive;
+  --font-serif: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'Montserrat', system-ui, -apple-system, sans-serif;
+
+  /* Kích thước & Khoảng cách (Mobile First 390px) */
+  --viewport-width-mobile: 390px;
+  --container-max-width: 480px;      /* Giới hạn độ rộng tối đa trên mobile/tablet */
+  
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-arch: 160px 160px 24px 24px; /* Vòm cung bo góc lớn đặc trưng */
+  --radius-full: 9999px;
+
+  --shadow-soft: 0 4px 20px rgba(74, 8, 8, 0.08);
+  --shadow-medium: 0 8px 30px rgba(74, 8, 8, 0.16);
+  --shadow-floating: 0 10px 35px rgba(56, 4, 4, 0.25);
+
+  --transition-fast: 0.25s ease;
+  --transition-smooth: 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-slow: 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
