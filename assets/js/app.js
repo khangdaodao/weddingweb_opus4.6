@@ -2,7 +2,7 @@
  * ==============================================================================
  * ỨNG DỤNG CHÍNH (APP INITIALIZATION)
  * ==============================================================================
- * Đọc dữ liệu từ WEDDING_CONFIG và render động các thành phần Phase 1.
+ * Đọc dữ liệu từ WEDDING_CONFIG và render động các thành phần theo từng Phase.
  */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -11,32 +11,35 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
-  // 1. Render thông tin lên Cover Overlay
+  // 1. Render thông tin lên Cover Overlay (Phase 1)
   renderCoverData(WEDDING_CONFIG);
 
-  // 2. Render thông tin lên Hero & Countdown Section
+  // 2. Render thông tin lên Hero & Countdown Section (Phase 1)
   renderHeroData(WEDDING_CONFIG);
 
   // 3. Render thông tin lên Section Quote & Couple Profile (Phase 2)
   renderQuoteData(WEDDING_CONFIG);
   renderCoupleData(WEDDING_CONFIG);
 
-  // 4. Khởi tạo Scroll Reveal Observer cho các phần tử khi cuộn tới
+  // 4. Render thông tin lên Section Wedding Events (Phase 3)
+  renderEventsData(WEDDING_CONFIG);
+
+  // 5. Khởi tạo Scroll Reveal Observer cho các phần tử khi cuộn tới
   initScrollReveal();
 
-  // 5. Khởi tạo Countdown
+  // 6. Khởi tạo Countdown
   initCountdown(WEDDING_CONFIG.weddingDate);
 
-  // 6. Khởi tạo Trình điều khiển Nhạc
+  // 7. Khởi tạo Trình điều khiển Nhạc
   const musicController = initMusic(WEDDING_CONFIG.music.src);
 
-  // 7. Khởi tạo Bottom Navbar
+  // 8. Khởi tạo Bottom Navbar
   const navbarController = initNavbar();
 
-  // 8. Khởi tạo hiệu ứng cánh hoa rơi
+  // 9. Khởi tạo hiệu ứng cánh hoa rơi (Hero Section)
   initPetals();
 
-  // 9. Khởi tạo sự kiện mở thiệp
+  // 10. Khởi tạo sự kiện mở thiệp
   initCover(() => {
     // Khi người dùng bấm "Mở Thiệp":
     musicController.showButton();
@@ -98,7 +101,7 @@ function renderHeroData(cfg) {
   if (elDesc) elDesc.textContent = cfg.heroInvitationText;
   if (elPhoto) elPhoto.src = cfg.groom.photo || "assets/images/couple/cover.jpg";
 
-  // Xử lý nút "Lưu Ngày Trọng Đại" (cuộn xuống mục sự kiện hoặc tải lịch)
+  // Xử lý nút "Lưu Ngày Trọng Đại" (cuộn xuống mục sự kiện)
   if (elSaveDateBtn) {
     elSaveDateBtn.addEventListener("click", () => {
       const eventsEl = document.getElementById("events");
@@ -169,6 +172,71 @@ function renderCoupleData(cfg) {
 }
 
 /**
+ * Điền dữ liệu vào Section Wedding Events (Phase 3)
+ * Bao gồm hai khối sự kiện riêng biệt: Lễ Thành Hôn & Tiệc Cưới
+ */
+function renderEventsData(cfg) {
+  if (!cfg.events) return;
+
+  const elEventsHeading = document.getElementById("eventsHeading");
+  if (elEventsHeading && cfg.events.sectionHeading) {
+    elEventsHeading.textContent = cfg.events.sectionHeading;
+  }
+
+  // 1. Khối A: Lễ Thành Hôn
+  const ceremony = cfg.events.ceremony;
+  if (ceremony) {
+    const elName = document.getElementById("ceremonyName");
+    const elMonth = document.getElementById("ceremonyMonth");
+    const elDayOfWeek = document.getElementById("ceremonyDayOfWeek");
+    const elDayNumber = document.getElementById("ceremonyDayNumber");
+    const elYear = document.getElementById("ceremonyYear");
+    const elTime = document.getElementById("ceremonyTime");
+    const elVenue = document.getElementById("ceremonyVenue");
+    const elAddress = document.getElementById("ceremonyAddress");
+    const elMapBtn = document.getElementById("ceremonyMapBtn");
+
+    if (elName) elName.textContent = ceremony.eventName;
+    if (elMonth) elMonth.textContent = ceremony.month;
+    if (elDayOfWeek) elDayOfWeek.textContent = ceremony.dayOfWeek;
+    if (elDayNumber) elDayNumber.textContent = ceremony.dayNumber;
+    if (elYear) elYear.textContent = ceremony.year;
+    if (elTime) elTime.textContent = ceremony.time;
+    if (elVenue) elVenue.textContent = ceremony.venue;
+    if (elAddress) elAddress.textContent = ceremony.address;
+    if (elMapBtn && ceremony.googleMapsUrl) {
+      elMapBtn.href = ceremony.googleMapsUrl;
+    }
+  }
+
+  // 2. Khối B: Tiệc Cưới
+  const reception = cfg.events.reception;
+  if (reception) {
+    const elName = document.getElementById("receptionName");
+    const elMonth = document.getElementById("receptionMonth");
+    const elDayOfWeek = document.getElementById("receptionDayOfWeek");
+    const elDayNumber = document.getElementById("receptionDayNumber");
+    const elYear = document.getElementById("receptionYear");
+    const elTime = document.getElementById("receptionTime");
+    const elVenue = document.getElementById("receptionVenue");
+    const elAddress = document.getElementById("receptionAddress");
+    const elMapBtn = document.getElementById("receptionMapBtn");
+
+    if (elName) elName.textContent = reception.eventName;
+    if (elMonth) elMonth.textContent = reception.month;
+    if (elDayOfWeek) elDayOfWeek.textContent = reception.dayOfWeek;
+    if (elDayNumber) elDayNumber.textContent = reception.dayNumber;
+    if (elYear) elYear.textContent = reception.year;
+    if (elTime) elTime.textContent = reception.time;
+    if (elVenue) elVenue.textContent = reception.venue;
+    if (elAddress) elAddress.textContent = reception.address;
+    if (elMapBtn && reception.googleMapsUrl) {
+      elMapBtn.href = reception.googleMapsUrl;
+    }
+  }
+}
+
+/**
  * Khởi tạo hiệu ứng xuất hiện khi cuộn tới (Scroll Reveal)
  */
 function initScrollReveal() {
@@ -185,7 +253,7 @@ function initScrollReveal() {
       });
     }, {
       root: null,
-      threshold: 0.15,
+      threshold: 0.12,
       rootMargin: "0px 0px -40px 0px"
     });
 

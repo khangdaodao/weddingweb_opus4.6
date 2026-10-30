@@ -17,6 +17,7 @@
   <link rel="stylesheet" href="assets/css/hero.css">
   <link rel="stylesheet" href="assets/css/quote.css">
   <link rel="stylesheet" href="assets/css/couple.css">
+  <link rel="stylesheet" href="assets/css/events.css">
   <link rel="stylesheet" href="assets/css/navbar.css">
   <link rel="stylesheet" href="assets/css/animations.css">
 </head>
@@ -206,7 +207,122 @@
     </section>
 
     <!-- Placeholder các section tiếp theo của các Phase sau -->
-    <div id="events" style="height: 10px;"></div>
+    <!-- =======================================================================
+         SECTION 4: WEDDING EVENTS (LỊCH TRÌNH SỰ KIỆN CƯỚI)
+         ======================================================================= -->
+    <section id="events" class="events-section">
+      <!-- Tiêu đề script Save The Date -->
+      <h3 id="eventsHeading" class="events-heading reveal-on-scroll">Save The Date</h3>
+
+      <!-- Khối vòm cong màu maroon đậm lớn -->
+      <div class="events-arch-panel reveal-on-scroll">
+        <!-- Họa tiết hoa màu nước góc trên bên trái -->
+        <img src="assets/images/decorations/flower-events-top-left.svg" alt="Hoa trang trí sự kiện" class="events-flower-top-left">
+
+        <!-- -------------------------------------------------------------------
+             KHỐI A: LỄ THÀNH HÔN (CEREMONY)
+             ------------------------------------------------------------------- -->
+        <div id="ceremonyBlock" class="event-block">
+          <!-- Icon hai chiếc nhẫn cưới lồng nhau -->
+          <div class="event-rings-icon">
+            <svg viewBox="0 0 80 60" fill="none" stroke="currentColor">
+              <path d="M40 18 C37 13 32 13 30 16 C27 20 33 24 40 29 C47 24 53 20 50 16 C48 13 43 13 40 18 Z" fill="none" stroke="#D4AF37" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              <ellipse cx="32" cy="38" rx="15" ry="15" fill="none" stroke="#FFFFFF" stroke-width="2.2"/>
+              <ellipse cx="48" cy="38" rx="15" ry="15" fill="none" stroke="#FFFFFF" stroke-width="2.2"/>
+              <circle cx="32" cy="23" r="1.5" fill="#D4AF37"/>
+            </svg>
+          </div>
+
+          <!-- Tên sự kiện -->
+          <h4 id="ceremonyName" class="event-name">Lễ Thành Hôn</h4>
+
+          <!-- Khung hiển thị ngày đặc trưng của mẫu -->
+          <div class="event-date-container">
+            <span id="ceremonyMonth" class="event-month">THÁNG 12</span>
+            <div class="event-date-row">
+              <div class="event-date-side">
+                <span id="ceremonyDayOfWeek" class="event-day-of-week">CHỦ NHẬT</span>
+              </div>
+              <span id="ceremonyDayNumber" class="event-day-number">12</span>
+              <div class="event-date-side">
+                <span id="ceremonyYear" class="event-day-of-week">2027</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Giờ tổ chức -->
+          <p id="ceremonyTime" class="event-time">09:00 Sáng</p>
+
+          <!-- Vạch phân cách kèm ghim địa điểm -->
+          <div class="event-location-divider">
+            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          </div>
+
+          <!-- Tên địa điểm & Địa chỉ -->
+          <p id="ceremonyVenue" class="event-venue">TƯ GIA NHÀ GÁI</p>
+          <p id="ceremonyAddress" class="event-address">Số 88 Đường Lê Duẩn, Phường Bến Nghé, Quận 1, TP. Hồ Chí Minh</p>
+
+          <!-- Nút Google Maps -->
+          <a id="ceremonyMapBtn" href="https://maps.google.com" target="_blank" rel="noopener noreferrer" class="btn-map" aria-label="Mở Google Maps dẫn đường Lễ Thành Hôn">
+            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            <span>GOOGLE MAPS</span>
+          </a>
+        </div>
+
+        <!-- Vạch phân cách giữa hai khối sự kiện -->
+        <div class="events-divider"></div>
+
+        <!-- -------------------------------------------------------------------
+             KHỐI B: TIỆC CƯỚI (RECEPTION)
+             ------------------------------------------------------------------- -->
+        <div id="receptionBlock" class="event-block">
+          <!-- Icon hai chiếc nhẫn cưới lồng nhau -->
+          <div class="event-rings-icon">
+            <svg viewBox="0 0 80 60" fill="none" stroke="currentColor">
+              <path d="M40 18 C37 13 32 13 30 16 C27 20 33 24 40 29 C47 24 53 20 50 16 C48 13 43 13 40 18 Z" fill="none" stroke="#D4AF37" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              <ellipse cx="32" cy="38" rx="15" ry="15" fill="none" stroke="#FFFFFF" stroke-width="2.2"/>
+              <ellipse cx="48" cy="38" rx="15" ry="15" fill="none" stroke="#FFFFFF" stroke-width="2.2"/>
+              <circle cx="32" cy="23" r="1.5" fill="#D4AF37"/>
+            </svg>
+          </div>
+
+          <!-- Tên sự kiện -->
+          <h4 id="receptionName" class="event-name">Tiệc Cưới</h4>
+
+          <!-- Khung hiển thị ngày đặc trưng của mẫu -->
+          <div class="event-date-container">
+            <span id="receptionMonth" class="event-month">THÁNG 12</span>
+            <div class="event-date-row">
+              <div class="event-date-side">
+                <span id="receptionDayOfWeek" class="event-day-of-week">CHỦ NHẬT</span>
+              </div>
+              <span id="receptionDayNumber" class="event-day-number">12</span>
+              <div class="event-date-side">
+                <span id="receptionYear" class="event-day-of-week">2027</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Giờ tổ chức -->
+          <p id="receptionTime" class="event-time">18:00 Tối</p>
+
+          <!-- Vạch phân cách kèm ghim địa điểm -->
+          <div class="event-location-divider">
+            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          </div>
+
+          <!-- Tên địa điểm & Địa chỉ -->
+          <p id="receptionVenue" class="event-venue">TRUNG TÂM HỘI NGHỊ WHITE PALACE</p>
+          <p id="receptionAddress" class="event-address">194 Hoàng Văn Thụ, Phường 9, Quận Phú Nhuận, TP. Hồ Chí Minh</p>
+
+          <!-- Nút Google Maps -->
+          <a id="receptionMapBtn" href="https://maps.google.com" target="_blank" rel="noopener noreferrer" class="btn-map" aria-label="Mở Google Maps dẫn đường Tiệc Cưới">
+            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            <span>GOOGLE MAPS</span>
+          </a>
+        </div>
+      </div>
+    </section>
     <div id="story" style="height: 10px;"></div>
     <div id="gift" style="height: 10px;"></div>
     <div id="wishes" style="height: 10px;"></div>

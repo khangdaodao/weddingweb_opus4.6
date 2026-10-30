@@ -1,0 +1,257 @@
+/**
+ * ==============================================================================
+ * SECTION 4: WEDDING EVENTS (LỊCH TRÌNH SỰ KIỆN CƯỚI)
+ * ==============================================================================
+ * Tái tạo theo mẫu TF-024-PHOTO (frame 15 - 19):
+ * - Tiêu đề script "Save The Date" ở đỉnh.
+ * - Khối panel vòm dài màu maroon sẫm đặc trưng, bo cong tròn lớn ở đỉnh.
+ * - Viền chỉ mảnh màu vàng kim / trắng nhạt viền quanh panel.
+ * - Hoa màu nước ở góc trên bên trái.
+ * - Hai khối sự kiện riêng biệt: Lễ Thành Hôn & Tiệc Cưới.
+ * - Nút "GOOGLE MAPS" màu trắng ngà nổi bật với icon ghim bản đồ.
+ */
+
+.events-section {
+  position: relative;
+  background-color: var(--color-bg-paper);
+  padding: 50px 16px 90px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Tiêu đề "Save The Date" chữ script mềm mại */
+.events-heading {
+  font-family: var(--font-script);
+  font-size: 42px;
+  color: var(--color-maroon-deep);
+  margin-bottom: 24px;
+  line-height: 1.15;
+  text-align: center;
+}
+
+/* Khối panel vòm lớn màu maroon sẫm */
+.events-arch-panel {
+  width: 100%;
+  max-width: 350px;
+  background-color: var(--color-maroon-deep);
+  border-radius: 175px 175px 36px 36px;
+  padding: 42px 18px 45px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  color: var(--color-text-white);
+  box-shadow: 0 12px 35px rgba(56, 4, 4, 0.35);
+  position: relative;
+  z-index: 2;
+  /* Viền chỉ mảnh bên trong theo mẫu */
+  outline: 1.5px solid rgba(255, 255, 255, 0.28);
+  outline-offset: -7px;
+}
+
+/* Hoa trang trí góc trên bên trái khối vòm */
+.events-flower-top-left {
+  position: absolute;
+  top: -12px;
+  left: -20px;
+  width: 110px;
+  z-index: 3;
+  pointer-events: none;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.2));
+}
+
+/* --------------------------------------------------------------------------
+ * TỪNG KHỐI SỰ KIỆN (EVENT BLOCK: LỄ THÀNH HÔN & TIỆC CƯỚI)
+ * -------------------------------------------------------------------------- */
+.event-block {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+/* Biểu tượng hai nhẫn cưới lồng nhau */
+.event-rings-icon {
+  width: 46px;
+  height: 38px;
+  margin-bottom: 12px;
+  color: var(--color-text-white);
+}
+
+/* Tên sự kiện (Lễ Thành Hôn / Tiệc Cưới) */
+.event-name {
+  font-family: var(--font-serif);
+  font-size: 26px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  color: var(--color-text-white);
+  margin-bottom: 14px;
+  line-height: 1.2;
+}
+
+/* Bố cục ngày đặc trưng của mẫu */
+.event-date-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 290px;
+  margin-bottom: 12px;
+}
+
+/* Tháng */
+.event-month {
+  font-family: var(--font-sans);
+  font-size: 13.5px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--color-text-white);
+  margin-bottom: 4px;
+}
+
+/* Hàng ngày chính: THỨ - SỐ NGÀY LỚN - NĂM */
+.event-date-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 12px;
+}
+
+/* Cột ngày thứ và cột năm có đường kẻ trên/dưới */
+.event-date-side {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.65);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.65);
+}
+
+.event-day-of-week,
+.event-year {
+  font-family: var(--font-sans);
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--color-text-white);
+  padding: 2px 0;
+}
+
+/* Số ngày to nổi bật ở giữa */
+.event-day-number {
+  font-family: var(--font-sans);
+  font-size: 60px;
+  font-weight: 700;
+  line-height: 0.95;
+  color: var(--color-text-white);
+  min-width: 70px;
+  text-align: center;
+}
+
+/* Giờ tổ chức */
+.event-time {
+  font-family: var(--font-sans);
+  font-size: 13.5px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 14px;
+  letter-spacing: 0.5px;
+}
+
+/* Đường phân cách kèm ghim địa điểm */
+.event-location-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 140px;
+  margin: 0 auto 12px;
+  gap: 8px;
+}
+
+.event-location-divider::before,
+.event-location-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.event-location-divider svg {
+  width: 14px;
+  height: 14px;
+  fill: var(--color-gold-accent);
+  flex-shrink: 0;
+}
+
+/* Tên địa điểm (tư gia / nhà hàng) */
+.event-venue {
+  font-family: var(--font-sans);
+  font-size: 13.5px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--color-text-white);
+  margin-bottom: 6px;
+  max-width: 280px;
+  line-height: 1.35;
+}
+
+/* Địa chỉ chi tiết */
+.event-address {
+  font-family: var(--font-sans);
+  font-size: 12.5px;
+  font-weight: 400;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.85);
+  max-width: 270px;
+  margin-bottom: 18px;
+}
+
+/* Nút bấm mở Google Maps màu trắng ngà theo mẫu */
+.btn-map {
+  background-color: var(--color-bg-paper);
+  color: var(--color-maroon-deep);
+  padding: 10px 22px;
+  border-radius: var(--radius-full);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.22);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn-map:hover,
+.btn-map:active {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.btn-map svg {
+  width: 14px;
+  height: 14px;
+  fill: var(--color-maroon-deep);
+}
+
+/* Vạch phân cách giữa hai sự kiện Lễ Thành Hôn và Tiệc Cưới */
+.events-divider {
+  width: 100%;
+  max-width: 250px;
+  height: 1px;
+  background: repeating-linear-gradient(to right, rgba(255, 255, 255, 0.35) 0, rgba(255, 255, 255, 0.35) 6px, transparent 6px, transparent 10px);
+  margin: 32px auto 30px;
+}

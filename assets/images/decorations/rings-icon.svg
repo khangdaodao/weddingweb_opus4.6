@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 60" fill="none" stroke="currentColor">
+  <!-- Biểu tượng hai chiếc nhẫn cưới lồng vào nhau kèm trái tim nhỏ phía trên -->
+  <!-- Trái tim nhỏ trên đỉnh hai chiếc nhẫn -->
+  <path d="M40 18 C37 13 32 13 30 16 C27 20 33 24 40 29 C47 24 53 20 50 16 C48 13 43 13 40 18 Z" 
+        fill="none" stroke="#D4AF37" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Nhẫn bên trái -->
+  <ellipse cx="32" cy="38" rx="15" ry="15" 
+           fill="none" stroke="#FFFFFF" stroke-width="2.2"/>
+  
+  <!-- Nhẫn bên phải lồng vào nhẫn trái -->
+  <ellipse cx="48" cy="38" rx="15" ry="15" 
+           fill="none" stroke="#FFFFFF" stroke-width="2.2"/>
+           
+  <!-- Điểm sáng lấp lánh (sparkle) -->
+  <circle cx="32" cy="23" r="1.5" fill="#D4AF37"/>
+</svg>
+

@@ -62,34 +62,37 @@ const WEDDING_CONFIG = {
   },
 
   // --------------------------------------------------------------------------
-  // 4. LỊCH TRÌNH SỰ KIỆN (EVENTS SCHEDULE)
+  // 4. LỊCH TRÌNH SỰ KIỆN (WEDDING EVENTS SCHEDULE)
   // --------------------------------------------------------------------------
-  events: [
-    {
+  events: {
+    sectionHeading: "Save The Date",
+    ceremony: {
       id: "ceremony",
-      type: "Lễ Thành Hôn",
+      eventName: "Lễ Thành Hôn",
       month: "THÁNG 12",
       dayOfWeek: "CHỦ NHẬT",
       dayNumber: "12",
       year: "2027",
+      date: "Chủ Nhật, ngày 12 tháng 12 năm 2027",
       time: "09:00 Sáng",
-      venueTitle: "TƯ GIA NHÀ GÁI",
+      venue: "TƯ GIA NHÀ GÁI",
       address: "Số 88 Đường Lê Duẩn, Phường Bến Nghé, Quận 1, TP. Hồ Chí Minh",
-      mapUrl: "https://maps.google.com"
+      googleMapsUrl: "https://maps.google.com/?q=88+L%C3%AA+Du%E1%BA%A9n,+B%E1%BA%BFn+Ngh%C3%A9,+Qu%E1%BA%ADn+1,+H%E1%BB%93+Ch%C3%AD+Minh"
     },
-    {
+    reception: {
       id: "reception",
-      type: "Tiệc Cưới",
+      eventName: "Tiệc Cưới",
       month: "THÁNG 12",
       dayOfWeek: "CHỦ NHẬT",
       dayNumber: "12",
       year: "2027",
+      date: "Chủ Nhật, ngày 12 tháng 12 năm 2027",
       time: "18:00 Tối",
-      venueTitle: "TRUNG TÂM HỘI NGHỊ TIỆC CƯỚI WHITE PALACE",
-      address: "194 Hoàng Văn Thụ, Phường 9, Phú Nhuận, TP. Hồ Chí Minh",
-      mapUrl: "https://maps.google.com"
+      venue: "TRUNG TÂM HỘI NGHỊ WHITE PALACE",
+      address: "194 Hoàng Văn Thụ, Phường 9, Quận Phú Nhuận, TP. Hồ Chí Minh",
+      googleMapsUrl: "https://maps.google.com/?q=White+Palace,+194+Ho%C3%A0ng+V%C4%83n+Th%E1%BB%A5,+Ph%C6%B0%E1%BB%9Dng+9,+Ph%C3%BA+Nhu%E1%BA%ADn,+H%E1%BB%93+Ch%C3%AD+Minh"
     }
-  ],
+  },
 
   // --------------------------------------------------------------------------
   // 5. CÂU CHUYỆN TÌNH YÊU (LOVE STORY TIMELINE)
