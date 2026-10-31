@@ -280,15 +280,20 @@ Thiết kế được chốt:
 
 ### Phase 4 — Gallery
 
-**Trạng thái:** Đã triển khai, đang chờ người dùng nghiệm thu.
+**Trạng thái:** Đã triển khai và tinh chỉnh theo phản hồi của người dùng, đang chờ nghiệm thu.
 
 Yêu cầu đã hoàn thành đối chiếu theo ảnh & video tham chiếu:
 
 - 6 ảnh demo từ `WEDDING_CONFIG.gallery` (`assets/images/couple/gallery-1.jpg` đến `gallery-6.jpg`).
-- Bố cục lưới 2 cột × 3 hàng trên mobile (viewport 390px), khoảng cách mảnh 6px sắc nét.
+- Bố cục lưới 2 cột × 3 hàng trên mobile (viewport 390px), khoảng cách giữa 2 cột là 8px.
+- Chiều rộng khung lưới: Khoảng cách từ mép trái/phải section burgundy đến mép ngoài lưới ảnh đúng **39px** tại viewport 390px (`padding: 0 39px;`).
 - Nền burgundy/maroon đậm liền mạch (`--color-maroon-deep`).
 - Mép trên lượn sóng mềm mại (scallop dual-curve) tạo cảm giác nền mở xuống ở giữa, khớp 100% ảnh tham chiếu.
-- Tiêu đề lồng ghép nghệ thuật “BEST Moment” (Serif in hoa & Script viết tay đan xen).
+- Tiêu đề nghệ thuật “BEST Moment” tinh chỉnh chuẩn xác:
+  - “BEST”: Serif in hoa thanh lịch, rõ nét (`Playfair Display`, weight 500, letter-spacing 1.5px).
+  - “Moment”: Đúng font Google Font `Mrs Saint Delafield`, weight 400.
+  - Vị trí lồng ghép: Chữ "M" của "Moment" lồng trực tiếp vào thân chữ "T" của "BEST" (nét cong bắt đầu dưới "S", vòng cao lồng qua thân "T", không lồng ở giữa E-S), cụm "oment" tiếp nối sang phải bên dưới baseline của "BEST", đối chiếu khớp 100% ảnh tham chiếu mẫu.
+- Giữ nguyên toàn bộ các phase khác, component khác và font chữ khác ban đầu.
 - Hiệu ứng tương tác:
   - Desktop hover: ảnh nhô nhẹ `translateY(-4px)` kèm zoom ảnh nhẹ `scale(1.04)`, không xê dịch layout.
   - Mobile touch: phản hồi chạm rõ ràng `:active` (`scale(0.97)`).
