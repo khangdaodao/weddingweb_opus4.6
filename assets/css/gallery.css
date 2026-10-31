@@ -1,0 +1,313 @@
+/**
+ * ==============================================================================
+ * SECTION 5: GALLERY (BEST MOMENT)
+ * ==============================================================================
+ * Tái tạo theo mẫu TF-024-PHOTO (video tham chiếu & ảnh chụp thực tế):
+ * - Nền màu maroon/burgundy đậm liền mạch (--color-maroon-deep).
+ * - Mép trên của nền uốn lượn cong mềm mại (scallop dual-curve) tạo cảm giác mở xuống ở giữa.
+ * - Tiêu đề lồng ghép nghệ thuật: "BEST" (Serif in hoa thanh lịch) & "Moment" (Script viết tay đan xen).
+ * - Lưới 6 ảnh 2 cột x 3 hàng, tỷ lệ portrait cân đối, khoảng cách viền mảnh tinh xảo.
+ * - Hiệu ứng hover nhô nhẹ trên desktop; phản hồi chạm active trên mobile.
+ * - Modal Lightbox xem ảnh lớn toàn màn hình: backdrop mờ, lướt chuyển ảnh, nút đóng & phím Esc.
+ */
+
+.gallery-section {
+  position: relative;
+  background-color: var(--color-maroon-deep);
+  padding: 0 0 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* --------------------------------------------------------------------------
+ * ĐƯỜNG CONG NGHỆ THUẬT MÉP TRÊN (SCALLOP DUAL-CURVE TOP DIVIDER)
+ * -------------------------------------------------------------------------- */
+.gallery-top-curve {
+  width: 100%;
+  height: 48px;
+  line-height: 0;
+  margin-top: -1px; /* Khử vệt hở pixel do làm tròn subpixel */
+  pointer-events: none;
+}
+
+.gallery-top-curve svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* --------------------------------------------------------------------------
+ * TIÊU ĐỀ LỒNG GHÉP NGHỆ THUẬT (BEST MOMENT HEADING)
+ * -------------------------------------------------------------------------- */
+.gallery-heading-wrap {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 12px auto 26px;
+  text-align: center;
+  user-select: none;
+}
+
+.gallery-title-best {
+  font-family: var(--font-serif);
+  font-size: 32px;
+  font-weight: 600;
+  letter-spacing: 2.2px;
+  color: var(--color-text-white);
+  text-transform: uppercase;
+  line-height: 1;
+  margin-right: 36px; /* Lệch sang trái chuẩn xác theo mẫu tham chiếu */
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+}
+
+.gallery-title-moment {
+  font-family: var(--font-script);
+  font-size: 45px;
+  font-weight: 400;
+  color: var(--color-text-white);
+  line-height: 1;
+  margin-top: -15px; /* Đan xen vào chữ BEST tạo cảm giác lãng mạn */
+  margin-left: 50px; /* Đẩy sang phải tạo nhịp điệu bay bổng */
+  transform: rotate(-3deg);
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* --------------------------------------------------------------------------
+ * LƯỚI HÌNH ẢNH (2 CỘT X 3 HÀNG)
+ * -------------------------------------------------------------------------- */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 6px; /* Khoảng cách mảnh gọn, sang trọng như ảnh mẫu */
+  width: 100%;
+  max-width: var(--viewport-width-mobile); /* Chuẩn 390px */
+  padding: 0 16px;
+  box-sizing: border-box;
+}
+
+.gallery-item {
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+  background-color: var(--color-maroon-dark);
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.28);
+  transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+}
+
+.gallery-item:focus-visible {
+  outline: 2px solid var(--color-gold-accent);
+  outline-offset: 2px;
+}
+
+.gallery-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform var(--transition-smooth), filter var(--transition-smooth);
+}
+
+/* Hiệu ứng hover trên Desktop (nhô nhẹ, không làm thay đổi kích thước layout) */
+@media (hover: hover) and (pointer: fine) {
+  .gallery-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.45);
+    z-index: 2;
+  }
+
+  .gallery-item:hover .gallery-img {
+    transform: scale(1.04);
+  }
+}
+
+/* Trạng thái chạm phản hồi trên Mobile */
+.gallery-item:active {
+  transform: scale(0.97);
+  opacity: 0.92;
+}
+
+/* --------------------------------------------------------------------------
+ * MODAL LIGHTBOX XEM ẢNH LỚN (FULLSCREEN LIGHTBOX)
+ * -------------------------------------------------------------------------- */
+.gallery-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  touch-action: manipulation;
+}
+
+.gallery-modal.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.gallery-modal-backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(14, 2, 2, 0.94);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  cursor: pointer;
+}
+
+.gallery-modal-content {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 440px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 16px 50px;
+  box-sizing: border-box;
+  pointer-events: none;
+}
+
+.gallery-modal-img-wrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: auto;
+}
+
+.gallery-modal-img {
+  max-width: 100%;
+  max-height: 72vh;
+  object-fit: contain;
+  border-radius: 10px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.65);
+  transform: scale(0.96);
+  opacity: 0;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.gallery-modal.is-open .gallery-modal-img {
+  transform: scale(1);
+  opacity: 1;
+}
+
+/* Nút đóng modal cố định ở góc trên bên phải */
+.gallery-modal-close {
+  position: fixed;
+  top: 18px;
+  right: 18px;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  pointer-events: auto;
+  z-index: 20;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.gallery-modal-close:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.08);
+}
+
+.gallery-modal-close:focus-visible {
+  outline: 2px solid var(--color-gold-accent);
+}
+
+/* Nút chuyển ảnh Trước / Kế tiếp */
+.gallery-modal-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  pointer-events: auto;
+  z-index: 20;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.gallery-modal-nav:hover {
+  background: rgba(0, 0, 0, 0.7);
+  transform: translateY(-50%) scale(1.08);
+}
+
+.gallery-modal-nav:focus-visible {
+  outline: 2px solid var(--color-gold-accent);
+}
+
+.gallery-modal-prev { left: 12px; }
+.gallery-modal-next { right: 12px; }
+
+/* Bộ đếm ảnh (vd: 1 / 6) */
+.gallery-modal-counter {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 13.5px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  color: rgba(255, 255, 255, 0.9);
+  background: rgba(0, 0, 0, 0.45);
+  padding: 4px 14px;
+  border-radius: 20px;
+  pointer-events: auto;
+  font-family: var(--font-sans);
+}
+
+/* Khóa cuộn trang khi modal đang mở */
+body.gallery-modal-open {
+  overflow: hidden !important;
+}
+
+/* Tôn trọng prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .gallery-item,
+  .gallery-img,
+  .gallery-modal,
+  .gallery-modal-img,
+  .gallery-modal-close,
+  .gallery-modal-nav {
+    transition: none !important;
+    transform: none !important;
+  }
+}
+
