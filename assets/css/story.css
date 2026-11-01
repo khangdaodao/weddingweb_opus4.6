@@ -1,0 +1,259 @@
+/**
+ * ==============================================================================
+ * SECTION 6: LOVE STORY TIMELINE (PHASE 5)
+ * ==============================================================================
+ * Bố cục và phong cách theo mẫu tham chiếu TF-024-PHOTO:
+ * - Nền màu kem ngà ngọc ấm áp (--color-bg-cream) kết hợp hiệu ứng watercolor wash nhẹ nhàng.
+ * - Tiêu đề "Love Story" bằng font Script lãng mạn, thanh thoát; dòng phụ trích dẫn ý nghĩa.
+ * - Trục dọc timeline chạy bên trái, đường nối mảnh liền mạch.
+ * - Marker tròn viền maroon, nền trắng, chứa biểu tượng trái tim tình yêu bên trong.
+ * - Các thẻ câu chuyện (Story Cards) màu burgundy/maroon đậm đà (hoặc dusty blush),
+ *   chữ trắng sáng dễ đọc, căn chỉnh tinh tế.
+ * - Hiệu ứng xuất hiện khi cuộn: ban đầu lệch phải (translateX) và độ mờ thấp,
+ *   khi cuộn tới vùng nhìn thấy sẽ trượt nhẹ vào vị trí và mờ dần sang rõ (slide-in + fade-in).
+ * - Hỗ trợ chuẩn xác prefers-reduced-motion và responsive mobile-first 390px.
+ */
+
+.story-section {
+  position: relative;
+  background-color: var(--color-bg-cream);
+  background-image: 
+    radial-gradient(ellipse at 50% 60px, rgba(220, 185, 185, 0.25) 0%, rgba(250, 244, 238, 0) 65%),
+    radial-gradient(circle at 10% 280px, rgba(230, 205, 205, 0.18) 0%, rgba(250, 244, 238, 0) 50%),
+    radial-gradient(circle at 90% 580px, rgba(225, 195, 195, 0.16) 0%, rgba(250, 244, 238, 0) 55%);
+  padding: 48px 0 84px; /* Đệm đáy 84px để không bị bottom navbar che nội dung */
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* --------------------------------------------------------------------------
+ * TIÊU ĐỀ & DÒNG PHỤ (STORY HEADER)
+ * -------------------------------------------------------------------------- */
+.story-header {
+  position: relative;
+  text-align: center;
+  padding: 0 24px;
+  margin-bottom: 38px;
+  user-select: none;
+}
+
+.story-title {
+  font-family: var(--font-script);
+  font-size: 46px;
+  font-weight: 400;
+  color: #7B1E1E; /* Sắc đỏ maroon ấm áp kinh điển theo mẫu */
+  line-height: 1.1;
+  margin: 0 0 6px 0;
+  text-shadow: 0 1px 3px rgba(123, 30, 30, 0.1);
+}
+
+.story-subtitle {
+  font-family: var(--font-sans);
+  font-size: 12.5px;
+  font-weight: 500;
+  font-style: normal;
+  color: var(--color-maroon-dark);
+  line-height: 1.45;
+  letter-spacing: 0.2px;
+  max-width: 270px;
+  margin: 0 auto;
+}
+
+/* --------------------------------------------------------------------------
+ * TRỤC TIMELINE & DANH SÁCH MỐC (TIMELINE WRAPPER & LINE)
+ * -------------------------------------------------------------------------- */
+.story-timeline-wrap {
+  position: relative;
+  width: 100%;
+  max-width: var(--viewport-width-mobile); /* Chuẩn mobile 390px */
+  margin: 0 auto;
+  padding: 0 20px 10px;
+  box-sizing: border-box;
+}
+
+/* Đường nối dọc timeline bên trái */
+.story-timeline-line {
+  position: absolute;
+  left: 35px; /* Tâm marker nằm ở x = 35px */
+  top: 18px;
+  bottom: 40px;
+  width: 2px;
+  background-color: var(--color-maroon-main);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.story-timeline {
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+  z-index: 2;
+}
+
+/* --------------------------------------------------------------------------
+ * MỖI MỐC CÂU CHUYỆN (STORY ITEM)
+ * -------------------------------------------------------------------------- */
+.story-item {
+  position: relative;
+  margin-bottom: 34px;
+  padding-left: 50px; /* Chừa không gian bên trái cho marker và timeline line */
+  box-sizing: border-box;
+}
+
+.story-item:last-child {
+  margin-bottom: 0;
+}
+
+/* Marker hình tròn chứa trái tim gắn trên timeline */
+.story-marker {
+  position: absolute;
+  left: 0;
+  top: 12px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #FFFFFF;
+  border: 2px solid var(--color-maroon-main);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(74, 8, 8, 0.16);
+  z-index: 3;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.story-marker-heart {
+  width: 14px;
+  height: 14px;
+  color: var(--color-maroon-main);
+  fill: currentColor;
+  display: block;
+}
+
+/* --------------------------------------------------------------------------
+ * THẺ NỘI DUNG (STORY CARD) & HIỆU ỨNG TRƯỢT KHI CUỘN
+ * -------------------------------------------------------------------------- */
+.story-card {
+  position: relative;
+  background-color: var(--color-maroon-card); /* Nền đỏ maroon đậm đà #520B0B */
+  border-radius: 14px;
+  padding: 22px 20px 22px;
+  color: var(--color-text-white);
+  box-shadow: 0 8px 24px rgba(74, 8, 8, 0.18);
+  box-sizing: border-box;
+  word-wrap: break-word;
+
+  /* Trạng thái ban đầu: hơi lệch sang phải và mờ */
+  opacity: 0.15;
+  transform: translateX(40px);
+  transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.65s ease;
+  will-change: transform, opacity;
+}
+
+/* Trạng thái khi đi vào vùng nhìn thấy (Revealed) */
+.story-card.is-revealed {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Biến thể màu thẻ: Dusty Blush (hồng tro ấm cúng) */
+.story-card.theme-dusty-blush {
+  background-color: #A36B6B;
+  box-shadow: 0 8px 24px rgba(163, 107, 107, 0.22);
+}
+
+/* Tiêu đề mốc thời gian */
+.story-card-title {
+  font-family: var(--font-sans);
+  font-size: 17.5px;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+  letter-spacing: 0.2px;
+}
+
+/* Năm / Thời gian */
+.story-card-date {
+  font-family: var(--font-sans);
+  font-size: 13.5px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0 0 14px 0;
+  line-height: 1.3;
+}
+
+/* Nội dung văn bản */
+.story-card-desc {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.story-card-desc p {
+  margin: 0 0 10px 0;
+}
+
+.story-card-desc p:last-child {
+  margin-bottom: 0;
+}
+
+/* Ảnh đính kèm (nếu mốc câu chuyện có ảnh) */
+.story-card-img-wrap {
+  margin-top: 14px;
+  border-radius: 8px;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+}
+
+.story-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* --------------------------------------------------------------------------
+ * RESPONSIVE & KHẢ NĂNG TRUY CẬP (ACCESSIBILITY)
+ * -------------------------------------------------------------------------- */
+@media (max-width: 360px) {
+  .story-timeline-wrap {
+    padding: 0 12px 10px;
+  }
+  .story-timeline-line {
+    left: 27px;
+  }
+  .story-item {
+    padding-left: 42px;
+  }
+  .story-marker {
+    width: 26px;
+    height: 26px;
+    top: 10px;
+  }
+  .story-marker-heart {
+    width: 12px;
+    height: 12px;
+  }
+  .story-card {
+    padding: 18px 16px;
+  }
+  .story-card-title {
+    font-size: 16px;
+  }
+}
+
+/* Tôn trọng prefers-reduced-motion: hiển thị ngay không trượt chuyển động */
+@media (prefers-reduced-motion: reduce) {
+  .story-card {
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+  .story-marker {
+    transition: none !important;
+  }
+}
+

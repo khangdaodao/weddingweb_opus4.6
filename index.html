@@ -22,6 +22,7 @@
   <link rel="stylesheet" href="assets/css/couple.css">
   <link rel="stylesheet" href="assets/css/events.css">
   <link rel="stylesheet" href="assets/css/gallery.css">
+  <link rel="stylesheet" href="assets/css/story.css">
   <link rel="stylesheet" href="assets/css/navbar.css">
   <link rel="stylesheet" href="assets/css/animations.css">
 </head>
@@ -433,7 +434,27 @@
       </div>
     </section>
 
-    <div id="story" style="height: 10px;"></div>
+    <!-- =========================================================================
+         SECTION 6: LOVE STORY TIMELINE
+         ========================================================================= -->
+    <section id="story" class="story-section" aria-label="Câu chuyện tình yêu">
+      <!-- Tiêu đề Love Story & Dòng trích dẫn -->
+      <div class="story-header reveal-on-scroll">
+        <h2 class="story-title" id="storyTitle">Love Story</h2>
+        <p class="story-subtitle" id="storySubtitle">"Every Love Story is Beautiful, but Ours is My Favorite"</p>
+      </div>
+
+      <!-- Khung Timeline -->
+      <div class="story-timeline-wrap">
+        <!-- Đường trục dọc timeline bên trái -->
+        <div class="story-timeline-line" aria-hidden="true"></div>
+
+        <!-- Danh sách các thẻ mốc thời gian (Render động từ config) -->
+        <div class="story-timeline" id="storyTimeline">
+          <!-- Tự động điền bởi assets/js/story.js -->
+        </div>
+      </div>
+    </section>
     <div id="gift" style="height: 10px;"></div>
     <div id="wishes" style="height: 10px;"></div>
 
@@ -544,6 +565,7 @@
   <script src="assets/js/navbar.js"></script>
   <script src="assets/js/petals.js"></script>
   <script src="assets/js/gallery.js"></script>
+  <script src="assets/js/story.js"></script>
   <script src="assets/js/app.js"></script>
 </body>
 

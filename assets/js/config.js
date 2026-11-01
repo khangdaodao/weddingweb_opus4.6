@@ -97,21 +97,37 @@ const WEDDING_CONFIG = {
   // --------------------------------------------------------------------------
   // 5. CÂU CHUYỆN TÌNH YÊU (LOVE STORY TIMELINE)
   // --------------------------------------------------------------------------
+  loveStoryHeading: {
+    title: "Love Story",
+    subtitle: '"Every Love Story is Beautiful, but Ours is My Favorite"'
+  },
   loveStory: [
     {
-      year: "2020",
+      id: "milestone-1",
       title: "Lần Đầu Gặp Gỡ",
-      content: "Chúng tôi gặp nhau lần đầu vào một buổi chiều thu Hà Nội dưới giảng đường đại học. Nụ cười rạng rỡ của em ngày hôm ấy đã để lại ấn tượng sâu đậm không thể nào quên."
+      date: "Năm 2020",
+      description: "Chúng tôi gặp nhau lần đầu vào một buổi chiều thu Hà Nội dưới giảng đường đại học. Nụ cười rạng rỡ của em ngày hôm ấy đã để lại ấn tượng sâu đậm không thể nào quên.\n\nSau những buổi trò chuyện thân mật, chúng tôi dần tìm thấy sự đồng điệu trong tâm hồn.",
+      side: "right",
+      theme: "maroon",
+      image: null
     },
     {
-      year: "2022",
-      title: "Lời Tỏ Tình & Bắt Đầu Yêu",
-      content: "Sau 2 năm đồng hành từ tình bạn đến tình yêu, chúng tôi nhận ra đối phương là mảnh ghép hoàn hảo nhất. Một cái gật đầu đã mở ra chuyến hành trình ngọt ngào cùng nhau vượt qua bao thăng trầm."
+      id: "milestone-2",
+      title: "Bắt Đầu Yêu",
+      date: "Năm 2022",
+      description: "Sau 2 năm đồng hành từ tình bạn đến tình yêu, chúng tôi nhận ra đối phương là mảnh ghép hoàn hảo nhất. Một cái gật đầu đã mở ra chuyến hành trình ngọt ngào cùng nhau vượt qua bao thăng trầm.\n\nMỗi ngày trôi qua đều là một kỷ niệm đáng trân trọng khi được ở bên nhau.",
+      side: "right",
+      theme: "maroon",
+      image: null
     },
     {
-      year: "2027",
-      title: "Ngày Về Chung Một Nhà",
-      content: "Sau những năm tháng thanh xuân sẻ chia vui buồn, chúng tôi quyết định nắm chặt tay nhau bước vào ngưỡng cửa hôn nhân, bắt đầu chương đẹp nhất của cuộc đời."
+      id: "milestone-3",
+      title: "Ngày Chung Đôi",
+      date: "12 . 12 . 2027",
+      description: "Sau những năm tháng thanh xuân sẻ chia vui buồn, chúng tôi quyết định nắm chặt tay nhau bước vào ngưỡng cửa hôn nhân, bắt đầu chương đẹp nhất của cuộc đời.\n\nCảm ơn bạn đã luôn ở bên và chúc phúc cho hành trình hạnh phúc của chúng tôi.",
+      side: "right",
+      theme: "maroon",
+      image: null
     }
   ],
 

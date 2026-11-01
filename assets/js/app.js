@@ -24,6 +24,11 @@ document.addEventListener("DOMContentLoaded", () => {
   // 4. Render thông tin lên Section Wedding Events (Phase 3)
   renderEventsData(WEDDING_CONFIG);
 
+  // 4b. Khởi tạo Section Love Story Timeline (Phase 5)
+  if (typeof initStory === "function") {
+    initStory(WEDDING_CONFIG);
+  }
+
   // 5. Khởi tạo Scroll Reveal Observer cho các phần tử khi cuộn tới
   initScrollReveal();
 

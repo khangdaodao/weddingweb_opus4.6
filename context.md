@@ -280,7 +280,7 @@ Thiết kế được chốt:
 
 ### Phase 4 — Gallery
 
-**Trạng thái:** Đã triển khai và tinh chỉnh theo phản hồi của người dùng, đang chờ nghiệm thu.
+**Trạng thái:** ĐÃ DUYỆT CHÍNH THỨC (Người dùng đã xác nhận duyệt ngày 01/11/2026).
 
 Yêu cầu đã hoàn thành đối chiếu theo ảnh & video tham chiếu:
 
@@ -304,25 +304,47 @@ Yêu cầu đã hoàn thành đối chiếu theo ảnh & video tham chiếu:
 
 ### Phase 5 — Love Story
 
-**Trạng thái:** Chưa triển khai.
+**Trạng thái:** ĐÃ TRIỂN KHAI HOÀN TẤT (Đang chờ người dùng nghiệm thu).
 
-Yêu cầu đã chốt:
+Yêu cầu đã hoàn thành đối chiếu sát theo screenshot `media_1793503611665_dd480b84.png` và video `phase5.mp4`:
 
-- Timeline dọc.
-- 3 mốc mặc định.
-- Các card xen kẽ trái/phải.
-- Marker hình trái tim.
-- Card màu burgundy và dusty blush theo mẫu.
-- Nội dung từng mốc có thể cấu hình.
-- Có thể mở rộng thêm mốc trong tương lai.
-- Fade-in theo cơ chế hiện tại, không tự ý thay đổi animation chung.
-
-Các tên mốc demo từng được đề xuất:
-- Lần đầu gặp gỡ.
-- Bắt đầu yêu.
-- Ngày chung đôi.
-
-Đây là nội dung demo, không phải câu chữ chính xác được xác minh từ mẫu.
+- **Bố cục & Phong cách:**
+  - Nền kem ngà `--color-bg-cream` (#FAF4EE) có hiệu ứng watercolor blush wash nhẹ nhàng.
+  - Tiêu đề “Love Story” dùng font Script mềm mại, lãng mạn (`Great Vibes`, màu đỏ rượu `#7B1E1E`).
+  - Dòng trích dẫn ngắn phía dưới: `"Every Love Story is Beautiful, but Ours is My Favorite"`.
+  - Trục timeline dọc màu maroon (`#5C0E0E`) đặt gọn gàng bên trái.
+  - Marker hình tròn viền maroon, nền trắng, chứa icon trái tim tình yêu bên trong (`♥`).
+  - Đường nối timeline tự động tính toán chính xác để nối từ tâm marker đầu tiên đến tâm marker cuối cùng (không bị thừa đoạn đuôi).
+  - Thẻ câu chuyện (Story Card) nền burgundy/maroon sâu lắng (`#520B0B`), bo góc tròn 14px, đổ bóng nhẹ, văn bản màu trắng tinh khôi dễ đọc.
+- **Hiệu ứng xuất hiện khi cuộn (Slide-in + Fade-in):**
+  - Trạng thái ban đầu: mỗi card lệch sang phải `translateX(40px)` và độ mờ thấp `opacity: 0.15`.
+  - Vùng kích hoạt: Sử dụng `IntersectionObserver` độc lập (`threshold: 0.12`, `rootMargin: '0px 0px -40px 0px'`).
+  - Khi cuộn tới vùng nhìn thấy: card trượt êm ái sang trái về `translateX(0)` và mờ dần sang rõ `opacity: 1` (`transition: 0.65s cubic-bezier(0.16, 1, 0.3, 1)`).
+  - Từng card kích hoạt độc lập, không đồng loạt; chỉ chạy hiệu ứng 1 lần, không lặp lại gây xao nhãng.
+  - Hỗ trợ chuẩn xác `@media (prefers-reduced-motion: reduce)`: hiển thị ngay không trượt giật.
+- **Dữ liệu cấu hình dễ tùy biến (trong `assets/js/config.js`):**
+  - Mọi mốc thời gian đều được lưu trong `WEDDING_CONFIG.loveStory` và render động qua `assets/js/story.js`.
+  - Cấu trúc trường dữ liệu mỗi mốc:
+    - `id`: Mã định danh duy nhất (vd: `"milestone-1"`).
+    - `title`: Tiêu đề mốc (vd: `"Lần Đầu Gặp Gỡ"`, `"Bắt Đầu Yêu"`, `"Ngày Chung Đôi"`).
+    - `date`: Thời gian (vd: `"Năm 2020"`, `"12 . 12 . 2027"`).
+    - `description`: Lời kể chi tiết (hỗ trợ phân đoạn bằng `\n\n`).
+    - `side`: Hướng hiển thị (`"right"`).
+    - `theme`: Chủ đề màu thẻ (`"maroon"` mặc định hoặc `"dusty-blush"`).
+    - `image`: Ảnh đính kèm (nếu mốc đó thực sự có ảnh, để `null` nếu không có).
+  - Dễ dàng thêm, xóa hoặc thay đổi thứ tự mốc mà không cần sửa code HTML.
+- **Các file đã tạo/sửa trong Phase 5:**
+  - Tạo mới: `assets/css/story.css`
+  - Tạo mới: `assets/js/story.js`
+  - Chỉnh sửa: `assets/js/config.js` (chuẩn hóa `loveStoryHeading` và mảng `loveStory`)
+  - Chỉnh sửa: `assets/js/app.js` (gọi `initStory(WEDDING_CONFIG)`)
+  - Chỉnh sửa: `index.html` (thêm `<link story.css>`, cấu trúc `<section id="story">`, thẻ `<script story.js>`)
+- **Kết quả kiểm thử thực tế tại Viewport 390 × 844 px:**
+  - DOM Render: Đã render đủ 3 mốc demo với đầy đủ marker trái tim và nội dung tương ứng.
+  - Bố cục & Tràn ngang: `scrollWidth === clientWidth === 390px` (`hasOverflow: false`).
+  - Trải nghiệm điều hướng: Bấm icon thứ 4 trên Bottom Navbar (icon sổ tay) cuộn mượt chính xác đến `#story`.
+  - Khoảng đệm đáy: Padding đáy 84px đảm bảo thẻ cuối cùng ("Ngày Chung Đôi") không bị Bottom Navbar che khuất.
+  - Kiểm tra cuộn nhanh/chậm: Cả 3 thẻ đều chuyển trạng thái `.is-revealed` thành công (`allRevealed: true`), không thẻ nào bị kẹt ở trạng thái mờ.
 
 ### Phase 6 — Wedding Gift + Wishes
 
@@ -457,8 +479,9 @@ Trước khi chuyển sang phase tiếp theo:
 - **Phase 2:** Đã duyệt tạm thời.
 - **Phase 3:** Đã triển khai, cần nghiệm thu chi tiết chức năng.
 - **Divider nhẫn cưới:** Ý tưởng đã chốt; cần kiểm tra kết quả.
-- **Phase 4 Gallery:** Đã triển khai (lưới 2x3, mép cong, modal xem ảnh lớn, điều hướng, đóng bằng Esc/backdrop), chờ duyệt.
-- **Phase 5 Love Story:** Chưa triển khai.
+- **Phase 4 Gallery:** ĐÃ DUYỆT CHÍNH THỨC (01/11/2026).
+- **Phase 5 Love Story:** ĐÃ TRIỂN KHAI HOÀN TẤT, đang chờ nghiệm thu.
+- **Phase 6 Wedding Gift + Wishes:** Chưa triển khai (ĐANG CHỜ LỆNH TỪ NGƯỜI DÙNG, TUYỆT ĐỐI CHƯA CODE).
 - **Phase 6 Wedding Gift + Wishes:** Chưa triển khai.
 - **Phase 7 Closing:** Chưa triển khai.
 - **Database:** Chưa cần.
