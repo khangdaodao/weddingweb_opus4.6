@@ -17,11 +17,12 @@
 .story-section {
   position: relative;
   background-color: var(--color-bg-cream);
-  background-image: 
+  background-image:
     radial-gradient(ellipse at 50% 60px, rgba(220, 185, 185, 0.25) 0%, rgba(250, 244, 238, 0) 65%),
     radial-gradient(circle at 10% 280px, rgba(230, 205, 205, 0.18) 0%, rgba(250, 244, 238, 0) 50%),
     radial-gradient(circle at 90% 580px, rgba(225, 195, 195, 0.16) 0%, rgba(250, 244, 238, 0) 55%);
-  padding: 48px 0 84px; /* Đệm đáy 84px để không bị bottom navbar che nội dung */
+  padding: 48px 0 84px;
+  /* Đệm đáy 84px để không bị bottom navbar che nội dung */
   width: 100%;
   box-sizing: border-box;
   overflow: hidden;
@@ -42,7 +43,8 @@
   font-family: var(--font-script);
   font-size: 46px;
   font-weight: 400;
-  color: #7B1E1E; /* Sắc đỏ maroon ấm áp kinh điển theo mẫu */
+  color: #7B1E1E;
+  /* Sắc đỏ maroon ấm áp kinh điển theo mẫu */
   line-height: 1.1;
   margin: 0 0 6px 0;
   text-shadow: 0 1px 3px rgba(123, 30, 30, 0.1);
@@ -66,7 +68,8 @@
 .story-timeline-wrap {
   position: relative;
   width: 100%;
-  max-width: var(--viewport-width-mobile); /* Chuẩn mobile 390px */
+  max-width: var(--viewport-width-mobile);
+  /* Chuẩn mobile 390px */
   margin: 0 auto;
   padding: 0 20px 10px;
   box-sizing: border-box;
@@ -75,7 +78,8 @@
 /* Đường nối dọc timeline bên trái */
 .story-timeline-line {
   position: absolute;
-  left: 35px; /* Tâm marker nằm ở x = 35px */
+  left: 35px;
+  /* Tâm marker nằm ở x = 35px */
   top: 18px;
   bottom: 40px;
   width: 2px;
@@ -97,7 +101,8 @@
 .story-item {
   position: relative;
   margin-bottom: 34px;
-  padding-left: 50px; /* Chừa không gian bên trái cho marker và timeline line */
+  padding-left: 50px;
+  /* Chừa không gian bên trái cho marker và timeline line */
   box-sizing: border-box;
 }
 
@@ -120,7 +125,14 @@
   justify-content: center;
   box-shadow: 0 2px 8px rgba(74, 8, 8, 0.16);
   z-index: 3;
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  opacity: 0;
+  transform: scale(0.65);
+  transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.65s ease, box-shadow 0.4s ease;
+}
+
+.story-item.is-revealed .story-marker {
+  opacity: 1;
+  transform: scale(1);
 }
 
 .story-marker-heart {
@@ -136,7 +148,8 @@
  * -------------------------------------------------------------------------- */
 .story-card {
   position: relative;
-  background-color: var(--color-maroon-card); /* Nền đỏ maroon đậm đà #520B0B */
+  background-color: var(--color-maroon-card);
+  /* Nền đỏ maroon đậm đà #520B0B */
   border-radius: 14px;
   padding: 22px 20px 22px;
   color: var(--color-text-white);
@@ -144,15 +157,16 @@
   box-sizing: border-box;
   word-wrap: break-word;
 
-  /* Trạng thái ban đầu: hơi lệch sang phải và mờ */
-  opacity: 0.15;
-  transform: translateX(40px);
-  transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.65s ease;
+  /* Trạng thái ban đầu: hoàn toàn ẩn (opacity 0) và lệch sang phải 35px */
+  opacity: 0;
+  transform: translateX(35px);
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease;
   will-change: transform, opacity;
 }
 
 /* Trạng thái khi đi vào vùng nhìn thấy (Revealed) */
-.story-card.is-revealed {
+.story-card.is-revealed,
+.story-item.is-revealed .story-card {
   opacity: 1;
   transform: translateX(0);
 }
@@ -222,24 +236,30 @@
   .story-timeline-wrap {
     padding: 0 12px 10px;
   }
+
   .story-timeline-line {
     left: 27px;
   }
+
   .story-item {
     padding-left: 42px;
   }
+
   .story-marker {
     width: 26px;
     height: 26px;
     top: 10px;
   }
+
   .story-marker-heart {
     width: 12px;
     height: 12px;
   }
+
   .story-card {
     padding: 18px 16px;
   }
+
   .story-card-title {
     font-size: 16px;
   }
@@ -252,8 +272,8 @@
     transform: none !important;
     opacity: 1 !important;
   }
+
   .story-marker {
     transition: none !important;
   }
 }
-

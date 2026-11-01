@@ -304,7 +304,7 @@ Yêu cầu đã hoàn thành đối chiếu theo ảnh & video tham chiếu:
 
 ### Phase 5 — Love Story
 
-**Trạng thái:** ĐÃ TRIỂN KHAI HOÀN TẤT (Đang chờ người dùng nghiệm thu).
+**Trạng thái:** ĐÃ DUYỆT CHÍNH THỨC (Người dùng đã xác nhận duyệt ngày 01/11/2026).
 
 Yêu cầu đã hoàn thành đối chiếu sát theo screenshot `media_1793503611665_dd480b84.png` và video `phase5.mp4`:
 
@@ -316,12 +316,15 @@ Yêu cầu đã hoàn thành đối chiếu sát theo screenshot `media_17935036
   - Marker hình tròn viền maroon, nền trắng, chứa icon trái tim tình yêu bên trong (`♥`).
   - Đường nối timeline tự động tính toán chính xác để nối từ tâm marker đầu tiên đến tâm marker cuối cùng (không bị thừa đoạn đuôi).
   - Thẻ câu chuyện (Story Card) nền burgundy/maroon sâu lắng (`#520B0B`), bo góc tròn 14px, đổ bóng nhẹ, văn bản màu trắng tinh khôi dễ đọc.
-- **Hiệu ứng xuất hiện khi cuộn (Slide-in + Fade-in):**
-  - Trạng thái ban đầu: mỗi card lệch sang phải `translateX(40px)` và độ mờ thấp `opacity: 0.15`.
-  - Vùng kích hoạt: Sử dụng `IntersectionObserver` độc lập (`threshold: 0.12`, `rootMargin: '0px 0px -40px 0px'`).
-  - Khi cuộn tới vùng nhìn thấy: card trượt êm ái sang trái về `translateX(0)` và mờ dần sang rõ `opacity: 1` (`transition: 0.65s cubic-bezier(0.16, 1, 0.3, 1)`).
-  - Từng card kích hoạt độc lập, không đồng loạt; chỉ chạy hiệu ứng 1 lần, không lặp lại gây xao nhãng.
-  - Hỗ trợ chuẩn xác `@media (prefers-reduced-motion: reduce)`: hiển thị ngay không trượt giật.
+- **Hiệu ứng xuất hiện khi cuộn (Slide-in + Fade-in tinh chỉnh hoàn hảo):**
+  - *Nguyên nhân vấn đề trước đó:* Ban đầu CSS để `opacity: 0.15` khiến card bị mờ chứ không ẩn hoàn toàn; đồng thời `threshold: 0.12` và `rootMargin: -40px` kích hoạt quá sớm khiến card 1 và 2 xuất hiện gần như đồng thời trước khi người dùng kịp quan sát chuyển động.
+  - *Giải pháp đã triển khai:*
+    - Đặt trạng thái ban đầu nghiêm ngặt: `opacity: 0`, `transform: translateX(35px)`.
+    - Chuyển sang quan sát phần tử cha `.story-item` (vốn có layout tĩnh, không bị ảnh hưởng bởi transform) để `IntersectionObserver` tính toán vùng giao thoa ổn định 100%.
+    - Cấu hình vùng kích hoạt tối ưu: `rootMargin: "0px 0px -100px 0px"`, `threshold: 0.2` giúp từng card chỉ kích hoạt khi thực sự tiến vào vùng quan sát tự nhiên của mắt người xem.
+    - Thời lượng chuyển động: `0.8s` (800ms) kèm easing `cubic-bezier(0.16, 1, 0.3, 1)` và `opacity 0.8s ease` tạo chuyển động lướt trang trọng, mềm mại.
+    - Từng card kích hoạt độc lập theo trình tự cuộn (Card 1 -> Card 2 -> Card 3), chỉ kích hoạt 1 lần duy nhất, giữ nguyên trạng thái rõ sau khi hiển thị.
+    - Hỗ trợ chuẩn xác `@media (prefers-reduced-motion: reduce)`: hiển thị ngay lập tức không trượt giật.
 - **Dữ liệu cấu hình dễ tùy biến (trong `assets/js/config.js`):**
   - Mọi mốc thời gian đều được lưu trong `WEDDING_CONFIG.loveStory` và render động qua `assets/js/story.js`.
   - Cấu trúc trường dữ liệu mỗi mốc:
@@ -480,9 +483,8 @@ Trước khi chuyển sang phase tiếp theo:
 - **Phase 3:** Đã triển khai, cần nghiệm thu chi tiết chức năng.
 - **Divider nhẫn cưới:** Ý tưởng đã chốt; cần kiểm tra kết quả.
 - **Phase 4 Gallery:** ĐÃ DUYỆT CHÍNH THỨC (01/11/2026).
-- **Phase 5 Love Story:** ĐÃ TRIỂN KHAI HOÀN TẤT, đang chờ nghiệm thu.
+- **Phase 5 Love Story:** ĐÃ DUYỆT CHÍNH THỨC (01/11/2026).
 - **Phase 6 Wedding Gift + Wishes:** Chưa triển khai (ĐANG CHỜ LỆNH TỪ NGƯỜI DÙNG, TUYỆT ĐỐI CHƯA CODE).
-- **Phase 6 Wedding Gift + Wishes:** Chưa triển khai.
 - **Phase 7 Closing:** Chưa triển khai.
 - **Database:** Chưa cần.
 - **RSVP:** Bỏ.

@@ -153,31 +153,40 @@ function updateTimelineLine() {
  * Hiệu ứng xuất hiện khi cuộn (Slide-in + Fade-in độc lập từng card)
  */
 function initStoryScrollObserver() {
-  const cards = document.querySelectorAll(".story-card");
-  if (!cards.length) return;
+  const items = document.querySelectorAll(".story-item");
+  if (!items.length) return;
 
   // Kiểm tra prefers-reduced-motion: nếu người dùng bật giảm chuyển động, hiển thị ngay lập tức
   const prefersReduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   if (prefersReduced || !("IntersectionObserver" in window)) {
-    cards.forEach(card => card.classList.add("is-revealed"));
+    items.forEach(item => {
+      item.classList.add("is-revealed");
+      const card = item.querySelector(".story-card");
+      if (card) card.classList.add("is-revealed");
+    });
     return;
   }
 
-  // Sử dụng IntersectionObserver độc lập cho Phase 5, không can thiệp animation dùng chung
+  // Sử dụng IntersectionObserver độc lập cho Phase 5 quan sát từng .story-item
+  // Đặt rootMargin: "0px 0px -100px 0px" và threshold: 0.2 để card chỉ kích hoạt khi đã thực sự tiến vào vùng nhìn thấy
   const observer = new IntersectionObserver((entries, obs) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add("is-revealed");
-        obs.unobserve(entry.target); // Kích hoạt 1 lần, không lặp lại gây xao nhãng
+        const card = entry.target.querySelector(".story-card");
+        if (card) {
+          card.classList.add("is-revealed");
+        }
+        obs.unobserve(entry.target); // Kích hoạt 1 lần duy nhất, giữ nguyên trạng thái rõ
       }
     });
   }, {
     root: null,
-    threshold: 0.12,
-    rootMargin: "0px 0px -40px 0px"
+    threshold: 0.2,
+    rootMargin: "0px 0px -100px 0px"
   });
 
-  cards.forEach(card => observer.observe(card));
+  items.forEach(item => observer.observe(item));
 
   // Lắng nghe resize màn hình để cập nhật lại chiều dài đường nối timeline nếu cần
   window.addEventListener("resize", () => {
