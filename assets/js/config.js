@@ -144,50 +144,70 @@ const WEDDING_CONFIG = {
   ],
 
   // --------------------------------------------------------------------------
-  // 7. MỪNG CƯỚI / HỘP MỪNG (WEDDING GIFT / DIGITAL ENVELOPE)
+  // 7. MỪNG CƯỚI / HỘP MỪNG (WEDDING GIFT / DIGITAL ENVELOPE - PHASE 6)
   // --------------------------------------------------------------------------
   gift: {
-    title: "Mừng Cưới",
-    message: "Sự hiện diện và lời chúc phúc của Quý khách là món quà quý giá nhất đối với chúng tôi. Nếu Quý khách muốn gửi quà mừng từ xa, xin vui lòng gửi qua:",
-    openPopupButtonText: "Gửi Mừng Cưới",
+    title: "Wedding Gift",
+    message: "Tanpa mengurangi rasa hormat, bagi Bapak/Ibu/Saudara/i yang ingin memberikan tanda kasih untuk kami, dapat melalui:",
+    openPopupButtonText: "Buka Amplop Digital",
+    modalTitle: "Amplop Digital",
     account: {
       bankName: "Ngân hàng Thương mại Cổ phần Ngoại thương Việt Nam (Vietcombank)",
       shortBankName: "Vietcombank",
       accountNumber: "9988776655",
       accountName: "VU HOANG NAM",
-      qrCodeImage: "assets/images/decorations/qr-demo.png",
+      qrCodeImage: "assets/images/decorations/qr-demo.svg",
+      copyButtonText: "Sao chép số tài khoản",
+      copiedText: "Đã sao chép!",
       demoWarning: "⚠️ ĐÂY LÀ QR DEMO MINH HOẠ — VUI LÒNG KHÔNG THỰC HIỆN GIAO DỊCH CHUYỂN TIỀN THẬT."
     }
   },
 
   // --------------------------------------------------------------------------
-  // 8. LỜI CHÚC (WISHES - KHÔNG RSVP, LƯU CLIENT-SIDE)
+  // 8. LỜI CHÚC (WISHES - PHASE 6: KHÔNG RSVP, LƯU CLIENT-SIDE)
   // --------------------------------------------------------------------------
   wishes: {
-    title: "Sổ Lưu Bút Lời Chúc",
-    subtitle: "Hãy để lại những lời chúc tốt đẹp nhất dành tặng cô dâu và chú rể nhé!",
+    title: "Wishes",
+    subtitle: "Tuliskan Ucapan & Doa Yang Terbaik Untuk Kedua Mempelai",
+    submitButtonText: "Kirim",
+    placeholderName: "sigma",
+    placeholderMessage: "Ucapan",
+    replyText: "Reply",
+    timeAgoText: "baru saja",
+    demoNote: "* Dữ liệu lời chúc demo lưu tạm thời trên trình duyệt (client-side).",
     initialComments: [
       {
-        name: "Minh Tuấn & Bích Ngọc",
-        time: "Vừa xong",
-        content: "Chúc hai bạn trăm năm hạnh phúc, mãi mãi yêu thương và đồng lòng vượt qua mọi thử thách!"
+        name: "sigma",
+        time: "baru saja",
+        content: "lala"
       },
       {
-        name: "Gia đình Bác Hùng",
-        time: "Hôm qua",
-        content: "Mừng ngày vui của hai cháu! Chúc hai cháu sớm có tin vui và xây dựng một tổ ấm vẹn tròn."
+        name: "kiki",
+        time: "baru saja",
+        content: "xin chào"
       }
     ]
   },
 
   // --------------------------------------------------------------------------
-  // 9. LỜI CẢM ƠN (FOOTER / THANK YOU)
+  // 9. LỜI CẢM ƠN (CLOSING / THANK YOU - PHASE 7)
   // --------------------------------------------------------------------------
+  closing: {
+    title: "Terima Kasih",
+    message: "Merupakan suatu kebahagiaan dan kehormatan bagi kami, apabila Bapak/Ibu/Saudara/i, berkenan hadir dan memberikan do’a restu kepada kedua mempelai.",
+    signOff: "Wassalamu’alaikum Wr. Wb.",
+    subSignOff: "Kami yang berbahagia,",
+    coupleName: "Hoàng Nam & Khánh Linh",
+    photo: "assets/images/couple/cover.jpg"
+  },
+  // Giữ alias thankYou để tương thích ngược
   thankYou: {
-    title: "Lời Cảm Ơn",
-    message: "Sự hiện diện và những lời chúc phúc chân thành từ Quý khách là niềm vinh hạnh to lớn cho gia đình chúng tôi. Xin chân thành cảm ơn!",
-    signOff: "Trân trọng cảm ơn,",
-    coupleName: "Hoàng Nam & Khánh Linh"
+    title: "Terima Kasih",
+    message: "Merupakan suatu kebahagiaan và kehormatan bagi kami, apabila Bapak/Ibu/Saudara/i, berkenan hadir dan memberikan do’a restu kepada kedua mempelai.",
+    signOff: "Wassalamu’alaikum Wr. Wb.",
+    subSignOff: "Kami yang berbahagia,",
+    coupleName: "Hoàng Nam & Khánh Linh",
+    photo: "assets/images/couple/cover.jpg"
   },
 
   // --------------------------------------------------------------------------
@@ -212,4 +232,3 @@ const WEDDING_CONFIG = {
 if (typeof module !== "undefined" && module.exports) {
   module.exports = WEDDING_CONFIG;
 }
-

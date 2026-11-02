@@ -29,6 +29,14 @@ document.addEventListener("DOMContentLoaded", () => {
     initStory(WEDDING_CONFIG);
   }
 
+  // 4c. Khởi tạo Section Mừng Cưới & Sổ Lời Chúc (Phase 6)
+  if (typeof initGiftWishes === "function") {
+    initGiftWishes(WEDDING_CONFIG);
+  }
+
+  // 4d. Render thông tin Section Lời Cảm Ơn (Phase 7)
+  renderClosingData(WEDDING_CONFIG);
+
   // 5. Khởi tạo Scroll Reveal Observer cho các phần tử khi cuộn tới
   initScrollReveal();
 
@@ -267,4 +275,26 @@ function initScrollReveal() {
     // Fallback nếu trình duyệt cũ không có IntersectionObserver
     elements.forEach(el => el.classList.add("in-view"));
   }
+}
+
+/**
+ * Điền dữ liệu vào Section Lời Cảm Ơn / Kết Thúc (Phase 7)
+ */
+function renderClosingData(cfg) {
+  const closingCfg = cfg.closing || cfg.thankYou;
+  if (!closingCfg) return;
+
+  const elTitle = document.getElementById("closingTitle");
+  const elMessage = document.getElementById("closingMessage");
+  const elSignoff = document.getElementById("closingSignoff");
+  const elSubsignoff = document.getElementById("closingSubsignoff");
+  const elNames = document.getElementById("closingCoupleNames");
+  const elPhoto = document.getElementById("closingPhoto");
+
+  if (elTitle && closingCfg.title) elTitle.textContent = closingCfg.title;
+  if (elMessage && closingCfg.message) elMessage.textContent = closingCfg.message;
+  if (elSignoff && closingCfg.signOff) elSignoff.textContent = closingCfg.signOff;
+  if (elSubsignoff && closingCfg.subSignOff) elSubsignoff.textContent = closingCfg.subSignOff;
+  if (elNames && closingCfg.coupleName) elNames.textContent = closingCfg.coupleName;
+  if (elPhoto && closingCfg.photo) elPhoto.src = closingCfg.photo;
 }

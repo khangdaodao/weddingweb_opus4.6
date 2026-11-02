@@ -1,0 +1,488 @@
+/**
+ * ==============================================================================
+ * PHASE 6: WEDDING GIFT & WISHES STYLESHEET
+ * ==============================================================================
+ * Tuân thủ thiết kế sát với ảnh tham chiếu (media_1793520799888_a7d0ad6a.png):
+ * - Section nền đỏ rượu vang (burgundy/maroon) liền mạch
+ * - 2 Card nền trắng xếp dọc bo góc tròn thanh lịch
+ * - Card 1: Wedding Gift (tiêu đề script đỏ, nút Buka Amplop Digital mở modal kèm QR demo)
+ * - Card 2: Wishes (tiêu đề script đỏ, form gửi lời chúc, danh sách bình luận kèm tích xanh)
+ * - TUYỆT ĐỐI: KHÔNG RSVP, không Hadir/Tidak Hadir, không dropdown điểm danh
+ */
+
+/* Container bọc toàn bộ Phase 6 */
+.gift-wishes-section {
+  background-color: var(--color-maroon-deep);
+  padding: 40px 18px 48px;
+  position: relative;
+  z-index: 2;
+  box-sizing: border-box;
+}
+
+/* Khối bọc từng card */
+.gift-card-wrapper,
+.wishes-card-wrapper {
+  max-width: 420px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.gift-card-wrapper {
+  margin-bottom: 24px;
+}
+
+/* Card màu trắng bo góc lớn */
+.gw-white-card {
+  background-color: #FFFFFF;
+  border-radius: 20px;
+  padding: 30px 22px 28px;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.22);
+  text-align: center;
+  box-sizing: border-box;
+  transition: transform var(--transition-fast);
+}
+
+/* Tiêu đề kiểu script màu đỏ burgundy */
+.gw-script-title {
+  font-family: var(--font-script), cursive;
+  font-size: 44px;
+  font-weight: 400;
+  color: #580816;
+  line-height: 1.2;
+  margin: 0 0 12px 0;
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+/* Đoạn mô tả / lời cảm ơn dưới tiêu đề */
+.gw-description {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 400;
+  color: #4A3E3E;
+  line-height: 1.6;
+  max-width: 320px;
+  margin: 0 auto 20px auto;
+}
+
+/* --------------------------------------------------------------------------
+   CARD 1: WEDDING GIFT
+   -------------------------------------------------------------------------- */
+.btn-open-amplop {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: #4A0808;
+  color: #FFFFFF;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 10px 22px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(74, 8, 8, 0.28);
+  transition: background-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+  text-decoration: none;
+}
+
+.btn-open-amplop:hover,
+.btn-open-amplop:focus-visible {
+  background-color: #380404;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(74, 8, 8, 0.35);
+}
+
+.btn-open-amplop:active {
+  transform: translateY(1px);
+}
+
+.btn-open-amplop svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+  flex-shrink: 0;
+}
+
+/* --------------------------------------------------------------------------
+   MODAL POPUP WEDDING GIFT (AMPLOP DIGITAL)
+   -------------------------------------------------------------------------- */
+.gift-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  box-sizing: border-box;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.gift-modal.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* Lớp nền mờ tối phía sau */
+.gift-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(15, 3, 3, 0.65);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+/* Khung nội dung modal */
+.gift-modal-dialog {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 360px;
+  background-color: #FFFDFC;
+  border-radius: 18px;
+  padding: 24px 20px 20px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+  box-sizing: border-box;
+  transform: scale(0.92) translateY(12px);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.gift-modal.is-open .gift-modal-dialog {
+  transform: scale(1) translateY(0);
+}
+
+/* Nút đóng modal */
+.gift-modal-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 32px;
+  height: 32px;
+  background: rgba(74, 8, 8, 0.08);
+  border: none;
+  border-radius: 50%;
+  color: #4A0808;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.15s;
+}
+
+.gift-modal-close:hover {
+  background: rgba(74, 8, 8, 0.16);
+  transform: scale(1.05);
+}
+
+.gift-modal-close svg {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+}
+
+.gift-modal-title {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-weight: 700;
+  color: #4A0808;
+  margin: 0 0 4px 0;
+  text-align: center;
+}
+
+.gift-modal-subtitle {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  color: #7D5E5A;
+  margin: 0 0 16px 0;
+  text-align: center;
+}
+
+/* Hộp thông tin tài khoản ngân hàng */
+.gift-bank-box {
+  background: #FAF4EE;
+  border: 1px solid rgba(200, 163, 102, 0.4);
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.gift-bank-name {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 700;
+  color: #4A0808;
+  margin-bottom: 6px;
+}
+
+.gift-account-number-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.gift-account-number {
+  font-family: 'Montserrat', monospace;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #1F2937;
+}
+
+/* Nút sao chép số tài khoản */
+.btn-copy-account {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: #4A0808;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 4px;
+  padding: 4px 10px;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-copy-account:hover {
+  background: #380404;
+}
+
+.btn-copy-account.copied {
+  background: #059669;
+}
+
+.btn-copy-account svg {
+  width: 12px;
+  height: 12px;
+  fill: currentColor;
+}
+
+.gift-account-holder {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 600;
+  color: #6B7280;
+  text-transform: uppercase;
+}
+
+/* Khung chứa mã QR */
+.gift-qr-wrap {
+  width: 170px;
+  height: 170px;
+  margin: 0 auto 14px auto;
+  padding: 6px;
+  background: #FFFFFF;
+  border: 1px solid #E5D7CE;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.gift-qr-img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Cảnh báo DEMO bắt buộc */
+.gift-demo-alert {
+  background-color: #FEF3C7;
+  border: 1px solid #F59E0B;
+  color: #92400E;
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.45;
+  text-align: center;
+}
+
+/* --------------------------------------------------------------------------
+   CARD 2: WISHES (SỔ LỜI CHÚC)
+   -------------------------------------------------------------------------- */
+.wishes-count {
+  font-family: var(--font-sans);
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #1F2937;
+  text-align: center;
+  margin: 0 0 14px 0;
+}
+
+/* Form gửi lời chúc */
+.wishes-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: left;
+}
+
+.wish-input,
+.wish-textarea {
+  width: 100%;
+  box-sizing: border-box;
+  font-family: var(--font-sans);
+  font-size: 13.5px;
+  color: #1F2937;
+  background-color: #FFFFFF;
+  border: 1px solid #D1D5DB;
+  border-radius: 8px;
+  padding: 10px 14px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.wish-input:focus,
+.wish-textarea:focus {
+  border-color: #4A0808;
+  box-shadow: 0 0 0 3px rgba(74, 8, 8, 0.12);
+}
+
+.wish-textarea {
+  resize: vertical;
+  min-height: 72px;
+}
+
+.btn-wish-submit {
+  align-self: flex-start;
+  background-color: #374151;
+  color: #FFFFFF;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 700;
+  padding: 8px 24px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.15s ease;
+  margin-top: 2px;
+}
+
+.btn-wish-submit:hover {
+  background-color: #1F2937;
+}
+
+.btn-wish-submit:active {
+  transform: translateY(1px);
+}
+
+/* Đường phân cách danh sách lời chúc */
+.wishes-divider {
+  height: 1px;
+  background-color: #E5E7EB;
+  margin: 18px 0 12px 0;
+}
+
+/* Danh sách lời chúc */
+.wishes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  text-align: left;
+}
+
+/* Từng lời chúc */
+.wish-item {
+  padding: 12px 0;
+  border-bottom: 1px solid #F3F4F6;
+}
+
+.wish-item:last-child {
+  border-bottom: none;
+}
+
+.wish-item-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 4px;
+}
+
+.wish-author {
+  font-family: var(--font-sans);
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #111827;
+}
+
+/* Icon tích xanh đã xác thực */
+.wish-verified {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #10B981;
+}
+
+.wish-verified svg {
+  width: 14px;
+  height: 14px;
+}
+
+.wish-text {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  color: #374151;
+  line-height: 1.5;
+  margin: 0 0 6px 0;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.wish-item-footer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-sans);
+  font-size: 11.5px;
+  color: #6B7280;
+}
+
+.wish-time {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.wish-time svg {
+  width: 12px;
+  height: 12px;
+}
+
+.wish-reply-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  color: #111827;
+  font-family: var(--font-sans);
+  font-size: 11.5px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.wish-reply-btn:hover {
+  text-decoration: underline;
+}
+
+/* Ghi chú demo ở đáy card */
+.wishes-demo-note {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-style: italic;
+  color: #9CA3AF;
+  text-align: center;
+  margin: 12px 0 0 0;
+}
+

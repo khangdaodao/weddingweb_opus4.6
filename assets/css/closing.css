@@ -1,0 +1,139 @@
+/**
+ * ==============================================================================
+ * PHASE 7: CLOSING SECTION (LỜI CẢM ƠN & KẾT THÚC)
+ * ==============================================================================
+ * Tuân thủ thiết kế sát với ảnh tham chiếu (media_1793520809602_110f82bc.jpg):
+ * - Nền kem / ngà sáng ấm áp (#FAF4EE) với hiệu ứng loang màu nước nhẹ
+ * - Cụm hoa trang trí góc trên-trái và góc dưới-phải
+ * - Khung ảnh chân dung oval vòm cong viền vàng hoàng gia
+ * - Tiêu đề script đỏ "Terima Kasih" / "Lời Cảm Ơn"
+ * - Đoạn văn tri ân trang trọng
+ * - Lời kết "Wassalamu’alaikum Wr. Wb." và "Kami yang berbahagia,"
+ * - Tên cặp đôi viết kiểu script thanh nhã
+ * - TUYỆT ĐỐI: KHÔNG CÓ NÚT "Back to top"
+ * - Padding đáy hào phóng (110px) chống tràn navbar che khuất
+ */
+
+.closing-section {
+  position: relative;
+  background-color: var(--color-bg-cream);
+  background-image: 
+    radial-gradient(circle at 50% 18%, rgba(244, 228, 220, 0.7) 0%, rgba(250, 244, 238, 0) 65%),
+    radial-gradient(circle at 20% 75%, rgba(235, 210, 205, 0.45) 0%, rgba(250, 244, 238, 0) 50%);
+  padding: 46px 20px 115px 20px;
+  overflow: hidden;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+/* Họa tiết hoa trang trí ở các góc */
+.closing-flower {
+  position: absolute;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.closing-flower-top-left {
+  top: -10px;
+  left: -15px;
+  width: 145px;
+  height: 145px;
+  opacity: 0.9;
+}
+
+.closing-flower-bottom-right {
+  bottom: 60px;
+  right: -20px;
+  width: 155px;
+  height: 155px;
+  transform: rotate(180deg);
+  opacity: 0.9;
+}
+
+/* Khối nội dung chính căn giữa */
+.closing-content {
+  position: relative;
+  z-index: 2;
+  max-width: 380px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+/* Khung ảnh chân dung oval vòm đứng viền vàng */
+.closing-photo-frame {
+  width: 165px;
+  height: 232px;
+  margin: 0 auto 20px auto;
+  border-radius: 90px 90px 90px 90px / 120px 120px 120px 120px;
+  border: 2.5px solid rgba(200, 163, 102, 0.75);
+  box-shadow: 0 8px 24px rgba(74, 8, 8, 0.12);
+  overflow: hidden;
+  background-color: #FAF4EE;
+  box-sizing: border-box;
+  transition: transform var(--transition-fast);
+}
+
+.closing-photo-frame:hover {
+  transform: scale(1.02);
+}
+
+.closing-photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* Tiêu đề "Terima Kasih" / "Lời Cảm Ơn" kiểu script */
+.closing-title {
+  font-family: var(--font-script), cursive;
+  font-size: 52px;
+  font-weight: 400;
+  color: #580816;
+  line-height: 1.15;
+  margin: 0 0 14px 0;
+  letter-spacing: 0.5px;
+}
+
+/* Lời tri ân */
+.closing-message {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 400;
+  color: #5A4543;
+  line-height: 1.65;
+  max-width: 320px;
+  margin: 0 auto 20px auto;
+}
+
+/* Lời kết trang trọng (Wassalamu’alaikum Wr. Wb. / Trân trọng cảm ơn) */
+.closing-signoff {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  font-weight: 700;
+  color: #4A0808;
+  margin: 0 0 24px 0;
+  letter-spacing: 0.3px;
+}
+
+/* Dòng chữ phụ "Kami yang berbahagia," */
+.closing-subsignoff {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 400;
+  color: #7D5E5A;
+  margin: 0 0 6px 0;
+}
+
+/* Tên cặp đôi viết kiểu chữ script */
+.closing-couple-names {
+  font-family: var(--font-script), cursive;
+  font-size: 42px;
+  font-weight: 400;
+  color: #580816;
+  line-height: 1.2;
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+
