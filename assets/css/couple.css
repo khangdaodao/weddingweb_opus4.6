@@ -103,8 +103,8 @@
 /* Hoa trang trí bên trái ảnh cô dâu */
 .flower-bride-accent {
   position: absolute;
-  top: 5px;
-  left: -40px;
+  top: -20px;
+  left: -60px;
   width: 95px;
   z-index: 1;
   pointer-events: none;
@@ -115,7 +115,7 @@
   position: absolute;
   bottom: 5px;
   right: -40px;
-  width: 95px;
+  width: 150px;
   z-index: 1;
   pointer-events: none;
 }
@@ -191,4 +191,3 @@
   line-height: 1;
   opacity: 0.85;
 }
-
