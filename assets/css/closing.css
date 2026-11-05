@@ -17,7 +17,7 @@
 .closing-section {
   position: relative;
   background-color: var(--color-bg-cream);
-  background-image: 
+  background-image:
     radial-gradient(circle at 50% 18%, rgba(244, 228, 220, 0.7) 0%, rgba(250, 244, 238, 0) 65%),
     radial-gradient(circle at 20% 75%, rgba(235, 210, 205, 0.45) 0%, rgba(250, 244, 238, 0) 50%);
   padding: 46px 20px 115px 20px;
@@ -31,6 +31,7 @@
   position: absolute;
   pointer-events: none;
   z-index: 1;
+  mix-blend-mode: multiply;
 }
 
 .closing-flower-top-left {
@@ -46,7 +47,7 @@
   right: -20px;
   width: 155px;
   height: 155px;
-  transform: rotate(180deg);
+  transform: rotate(0deg);
   opacity: 0.9;
 }
 
@@ -136,4 +137,3 @@
   margin: 0;
   letter-spacing: 0.5px;
 }
-
