@@ -76,9 +76,9 @@
 /* Hoa trang trí góc trên bên trái khối vòm */
 .events-flower-top-left {
   position: absolute;
-  top: -12px;
-  left: -20px;
-  width: 110px;
+  top: -8px;
+  left: 0px;
+  width: 95px;
   z-index: 3;
   pointer-events: none;
   filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.2));
