@@ -89,7 +89,7 @@ function renderCoverData(cfg) {
   if (elTagline) elTagline.textContent = cfg.invitationTag;
   if (elNames) elNames.textContent = `${cfg.groom.shortName} & ${cfg.bride.shortName}`;
   if (elDate) elDate.textContent = cfg.dateFormatted;
-  if (elPhoto) elPhoto.src = cfg.groom.photo || "assets/images/couple/cover.jpg";
+  if (elPhoto) elPhoto.src = cfg.coverPhoto || "assets/images/couple/anhbia.jpg";
 
   // Lấy tên khách mời từ query parameter (?to=...) nếu có
   const urlParams = new URLSearchParams(window.location.search);
@@ -112,7 +112,7 @@ function renderHeroData(cfg) {
   if (elNames) elNames.textContent = `${cfg.groom.shortName} & ${cfg.bride.shortName}`;
   if (elDate) elDate.textContent = cfg.dateFormatted;
   if (elDesc) elDesc.textContent = cfg.heroInvitationText;
-  if (elPhoto) elPhoto.src = cfg.groom.photo || "assets/images/couple/cover.jpg";
+  if (elPhoto) elPhoto.src = cfg.coverPhoto || "assets/images/couple/anhbia.jpg";
 
   // Xử lý nút "Lưu Ngày Trọng Đại" (cuộn xuống mục sự kiện)
   if (elSaveDateBtn) {
@@ -296,5 +296,5 @@ function renderClosingData(cfg) {
   if (elSignoff && closingCfg.signOff) elSignoff.textContent = closingCfg.signOff;
   if (elSubsignoff && closingCfg.subSignOff) elSubsignoff.textContent = closingCfg.subSignOff;
   if (elNames && closingCfg.coupleName) elNames.textContent = closingCfg.coupleName;
-  if (elPhoto && closingCfg.photo) elPhoto.src = closingCfg.photo;
+  if (elPhoto) elPhoto.src = closingCfg.photo || cfg.coverPhoto || "assets/images/couple/anhbia.jpg";
 }

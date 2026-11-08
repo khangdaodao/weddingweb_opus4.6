@@ -10,6 +10,11 @@
 
 const WEDDING_CONFIG = {
   // --------------------------------------------------------------------------
+  // 0. ẢNH BÌA CHÍNH (COVER & HERO PHOTO)
+  // --------------------------------------------------------------------------
+  coverPhoto: "assets/images/couple/anhbia.jpg",
+
+  // --------------------------------------------------------------------------
   // 1. THÔNG TIN CẶP ĐÔI (COUPLE INFORMATION)
   // --------------------------------------------------------------------------
   // Lưu ý: Không hiển thị thông tin cha mẹ ở phần giới thiệu theo yêu cầu
@@ -229,21 +234,21 @@ const WEDDING_CONFIG = {
   // 9. LỜI CẢM ƠN (CLOSING / THANK YOU - PHASE 7)
   // --------------------------------------------------------------------------
   closing: {
-    title: "Terima Kasih",
-    message: "Merupakan suatu kebahagiaan dan kehormatan bagi kami, apabila Bapak/Ibu/Saudara/i, berkenan hadir dan memberikan do’a restu kepada kedua mempelai.",
-    signOff: "Wassalamu’alaikum Wr. Wb.",
-    subSignOff: "Kami yang berbahagia,",
+    title: "Thank You",
+    message: "It is a great joy and honor for us to have you share in our special day and send your warmest blessings to our new journey.",
+    signOff: "With Love & Gratitude",
+    subSignOff: "Happily yours,",
     coupleName: "Hoàng Nam & Khánh Linh",
-    photo: "assets/images/couple/cover.jpg"
+    photo: "assets/images/couple/gallery-4.jpg"
   },
   // Giữ alias thankYou để tương thích ngược
   thankYou: {
-    title: "Terima Kasih",
-    message: "Merupakan suatu kebahagiaan và kehormatan bagi kami, apabila Bapak/Ibu/Saudara/i, berkenan hadir dan memberikan do’a restu kepada kedua mempelai.",
-    signOff: "Wassalamu’alaikum Wr. Wb.",
-    subSignOff: "Kami yang berbahagia,",
+    title: "Thank You",
+    message: "It is a great joy and honor for us to have you share in our special day and send your warmest blessings to our new journey.",
+    signOff: "With Love & Gratitude",
+    subSignOff: "Happily yours,",
     coupleName: "Hoàng Nam & Khánh Linh",
-    photo: "assets/images/couple/cover.jpg"
+    photo: "assets/images/couple/gallery-4.jpg"
   },
 
   // --------------------------------------------------------------------------
