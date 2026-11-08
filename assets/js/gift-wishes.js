@@ -182,7 +182,24 @@ function initGiftWishes(cfg) {
       console.warn("Lỗi lưu localStorage:", e);
     }
   }
-
+  // 2.1b. Tự động tải lời chúc từ Google Sheet
+  async function loadWishesFromSheet() {
+    if (!wishesCfg.sheetApiUrl) return;
+    try {
+      const res = await fetch(wishesCfg.sheetApiUrl);
+      const result = await res.json();
+      if (result && result.status === "success" && Array.isArray(result.data) && result.data.length > 0) {
+        // Đảo ngược để lời chúc mới nhất luôn ở trên đầu
+        const sheetWishes = result.data.reverse();
+        saveComments(sheetWishes);
+        renderCarouselPage(0, false);
+        resetAutoPlay();
+        updateViewAllModal();
+      }
+    } catch (err) {
+      console.warn("Chưa thể kết nối Google Sheet, sử dụng dữ liệu offline:", err);
+    }
+  }
   // 2.2. Xử lý nút chọn Nhà Trai / Nhà Gái
   let selectedSide = "groom";
 
@@ -385,6 +402,18 @@ function initGiftWishes(cfg) {
       // Reset ô nhập lời chúc
       if (wishMessageInput) wishMessageInput.value = "";
       if (wishNameInput) wishNameInput.value = "";
+      // Gửi đồng bộ lên Google Sheet (chạy ngầm trong nền)
+      if (wishesCfg.sheetApiUrl) {
+        fetch(wishesCfg.sheetApiUrl, {
+          method: "POST",
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
+          body: JSON.stringify({
+            name: name,
+            side: side,
+            content: content
+          })
+        }).catch((err) => console.warn("Lỗi gửi lời chúc lên Sheet:", err));
+      }
     });
   }
 
@@ -474,6 +503,7 @@ function initGiftWishes(cfg) {
   setSide("groom");
   renderCarouselPage(0, false);
   startAutoPlay();
+  loadWishesFromSheet(); // <-- Thêm dòng này vào đây
 }
 
 /**

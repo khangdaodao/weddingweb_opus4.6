@@ -1,3 +1,4 @@
+
 /**
  * ==============================================================================
  * ⭐ CẤU HÌNH DỮ LIỆU THIỆP CƯỚI (WEDDING CONFIGURATION)
@@ -46,7 +47,7 @@ const WEDDING_CONFIG = {
   guestGreetingPrefix: "Kính gửi Quý khách:",
   guestGreetingDefault: "Bạn bè & Người thân thương",
   openButtonText: "Mở Thiệp",
-  
+
   heroInvitationText: "Chúng tôi sắp bước vào chặng đường mới, và mong được đón tiếp bạn trong ngày hạnh phúc nhất!",
   saveTheDateText: "Lưu Ngày Trọng Đại",
 
@@ -167,6 +168,8 @@ const WEDDING_CONFIG = {
   // 8. LỜI CHÚC (WISHES - CAROUSEL 3 MỤC, PHÂN LOẠI NHÀ TRAI / NHÀ GÁI, VIEW ALL)
   // --------------------------------------------------------------------------
   wishes: {
+    sheetApiUrl: "https://script.google.com/macros/s/AKfycbzighW9qPbHpKLnKcIOQKh0rCevcgK8y1Rw8h9GFiI9g-s0JhnSziVgwMh_xvUJDhZO/exec",
+
     title: "Wishes",
     subtitle: "Gửi những lời chúc tốt đẹp nhất đến cô dâu & chú rể",
     submitButtonText: "Gửi Lời Chúc",
@@ -203,7 +206,7 @@ const WEDDING_CONFIG = {
         name: "Thùy Linh",
         side: "bride",
         time: "1 giờ trước",
-        content: "Cô dâu hôm nay xinh đẹp tuyệt trần! Chúc hai bạn một đời an yên, yêu thương và thấu hiểu nhau."
+        content: "      "
       },
       {
         id: "w5",
